@@ -1,0 +1,11 @@
+C:\Users\admin\source\repos\NES_Decom\NES_Decom\bin\Release\netcoreapp3.1\Decompiler.exe
+C:\Users\admin\source\repos\NES_Decom\NES_Decom\bin\Release\netcoreapp3.1\Decompiler.deps.json
+C:\Users\admin\source\repos\NES_Decom\NES_Decom\bin\Release\netcoreapp3.1\Decompiler.runtimeconfig.json
+C:\Users\admin\source\repos\NES_Decom\NES_Decom\bin\Release\netcoreapp3.1\Decompiler.runtimeconfig.dev.json
+C:\Users\admin\source\repos\NES_Decom\NES_Decom\bin\Release\netcoreapp3.1\Decompiler.dll
+C:\Users\admin\source\repos\NES_Decom\NES_Decom\bin\Release\netcoreapp3.1\Decompiler.pdb
+C:\Users\admin\source\repos\NES_Decom\NES_Decom\obj\Release\netcoreapp3.1\Decompiler.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\NES_Decom\NES_Decom\obj\Release\netcoreapp3.1\Decompiler.AssemblyInfoInputs.cache
+C:\Users\admin\source\repos\NES_Decom\NES_Decom\obj\Release\netcoreapp3.1\Decompiler.AssemblyInfo.cs
+C:\Users\admin\source\repos\NES_Decom\NES_Decom\obj\Release\netcoreapp3.1\Decompiler.dll
+C:\Users\admin\source\repos\NES_Decom\NES_Decom\obj\Release\netcoreapp3.1\Decompiler.pdb
