@@ -11,11 +11,115 @@ namespace NES_Decom
         static void Main(string[] args)
         {
 
+
+            bool restart = true;
+            while (restart == true)
+            {
+                Console.WriteLine("Create a text file somewhere then drag and drop that text file into here and press enter...");
+                string outputName = Console.ReadLine();
+                string extOut = Path.GetExtension(outputName);
+
+
+                //TODO: Try to rename the input TXT file to <gamename>_disassembled.txt
+
+                string extCheck = ".txt";
+                bool trueTXTFile = false;
+
+                while (!extOut.Equals(extCheck) == true && trueTXTFile == false)
+                {
+                    Console.WriteLine("Not an TEXT file! Try again!");
+                    if (trueTXTFile == false)
+                    {
+                        trueTXTFile = false;
+                        Console.WriteLine("Drag and drop your TEXT file in this text box then press enter...");
+                        outputName = Console.ReadLine();
+                        extOut = Path.GetExtension(outputName);
+                        extCheck = ".txt";
+                    }
+
+                    else if (extOut.Equals(extCheck))
+                    {
+                        trueTXTFile = true;
+                    }
+
+                }
+                Console.WriteLine("Drag and drop your ROM file into this console window...\n");
+                string fileName = Console.ReadLine();
+                string romName = Path.GetFileName(fileName);
+                string ROMext = Path.GetExtension(fileName);
+                Console.WriteLine(ROMext);
+                bool ROMFile = false;
+                while (ROMFile == false)
+                {
+                    if (ROMext == ".nes")
+                    {
+                        NESRom(fileName, romName, ROMext, outputName);
+                        ROMFile = true;
+                    }
+
+                    if (ROMext == ".gb")
+                    {
+                        //GBRom();
+                        ROMFile = true;
+
+                    }
+
+                    if (ROMext != ".nes" && ROMext != ".gb")
+                    {
+                        Console.WriteLine("You have not selected a compatible ROM file, try again!\n");
+                        Console.WriteLine("Would you like to try again? Y/N");
+                        string userSelection = Console.ReadLine();
+                        if (userSelection == "Y")
+                        {
+                            ROMFile = false;
+                        }
+                        else
+                        {
+                            Environment.Exit(0);
+                        }
+                    }
+
+
+                    Console.WriteLine("Decompiling done. This SHOULD have stripped CHR data. A few bytes might have slipped through the cracks.\nCheck your ouput text for the full code.\n");
+                    using (StreamWriter ending = File.AppendText(outputName))
+                    {
+                        Console.WriteLine("-----------------------END OF FILE-----------------------");
+                        ending.WriteLine("-----------------------END OF FILE-----------------------");
+
+                    }
+                    /*string TextFileName = Path.GetFileName(outputName);
+                    Console.WriteLine(TextFileName);
+                    string RenamedFile = (TextFileName + "_Disassembled");
+                    if (File.Exists(outputName))
+                    {
+                        File.Move(outputName, RenamedFile);
+                    }
+                    */
+
+                    Console.WriteLine("Would you like to convert another ROM file? (Y/N) ");
+                    string UserContinue = Console.ReadLine();
+                    if (UserContinue == "Y" || UserContinue == "y")
+                    {
+                        restart = true;
+                    }
+                    else
+                    {
+                        Environment.Exit(0);
+                    }
+                    
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// Checks NES ROM and Text file to then be passed to ReadNESROM
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="romName"></param>
+        public static void NESRom(string fileName, string romName, string ext, string outputName)
+        {
             //the file check logic is EXTREMELY messy. I'll touch it up later™
-            Console.WriteLine("Drag and drop your NES ROM file in this text box then press enter...");
-            string fileName = Console.ReadLine();
-            string ext = Path.GetExtension(fileName);
-            string romName = Path.GetFileName(fileName);
             string fileExt = ".nes";
             bool trueNESFile = false;
 
@@ -37,48 +141,21 @@ namespace NES_Decom
                     trueNESFile = true;
                 }
             }
-
             
-
-
-            Console.WriteLine("Create a text file somewhere then drag and drop that text file into here and press enter...");
-            string outputName = Console.ReadLine();
             //string path = Path.GetDirectoryName(outputName);
             //Console.WriteLine(path);
-            string extOut = Path.GetExtension(outputName);
+            
 
-
-            //TODO: Try to rename the input TXT file to <gamename>_disassembled.txt
-
-            string extCheck = ".txt";
-            bool trueTXTFile = false;
-
-            while (!extOut.Equals(extCheck) == true && trueTXTFile == false)
-            {
-                Console.WriteLine("Not an TEXT file! Try again!");
-                if (trueTXTFile == false)
-                {
-                    trueTXTFile = false;
-                    Console.WriteLine("Drag and drop your TEXT file in this text box then press enter...");
-                    outputName = Console.ReadLine();
-                    extOut = Path.GetExtension(outputName);
-                    extCheck = ".txt";
-                }
-
-                else if (extOut.Equals(extCheck))
-                {
-                    trueTXTFile = true;
-                }
-                
-            }
-
-            ReadRom(fileName, outputName, romName);
-
-            Console.WriteLine("Decompiling done. This SHOULD have stripped CHR data. A few bytes might have slipped through the cracks.\nCheck your ouput text for the full code.\nPress enter to close");
-            Console.Read();
+            ReadNESRom(fileName, outputName, romName);
         }
 
-        private unsafe static void ReadRom(string fName, string outputName, string romName)
+        /// <summary>
+        /// This sets up the NES rom to be passsed to NESDisassemble
+        /// </summary>
+        /// <param name="fName"></param>
+        /// <param name="outputName"></param>
+        /// <param name="romName"></param>
+        private unsafe static void ReadNESRom(string fName, string outputName, string romName)
         {
             string textName = outputName;
             string nesName = romName;
@@ -111,13 +188,13 @@ namespace NES_Decom
                 int PRGSize = defaultPRG * PRGLoc; //get the size in bytes of the PRG 
                 int CHRSize = defaultCHR * CHRLoc; //get the size in bytes of the CHR
 
+
                 int flag6 = byteArray[6];
                 string flag6Convert = Convert.ToString(flag6, 2);
 
                 char[] flag6Char = flag6Convert.ToCharArray();
 
-
-                using (var data = new StreamWriter(outputName, true))
+                using (var data = new StreamWriter(outputName, false))
                 {
 
 
@@ -179,8 +256,14 @@ namespace NES_Decom
                     {
                         pc += nes.Disassembler(ToArrayBytes, pc, textName);
                     }
+
                 }
             }
+        }
+
+        public static void RenameFile (FileInfo originalFile, string newName)
+        {
+            originalFile.MoveTo(newName);
         }
     }
 }

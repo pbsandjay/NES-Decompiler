@@ -1,0 +1,6696 @@
+tetris.nes uses Horizontal Mirroring
+tetris.nes does not use SRAM
+tetris.nes does not use a trainer
+tetris.nes does not use four-screen VRAM
+The full size of tetris.nes is 48KB
+The size of the tetris.nes PRG ROM is 32KB
+The size of the tetris.nes CHR ROM is 16KB
+
+LDX    #$00
+JMP    $805A
+PHA
+TXA
+PHA
+TYA
+PHA
+LDA    #$00
+STA    $B3
+JSR    $804B
+DEC    $C3
+LDA    $C3
+CMP    #$FF
+BNE    $02
+INC    $C3
+JSR    $AB5E
+LDA    $B1
+CLC
+ADC    #$01
+STA    $B1
+LDA    #$00
+ADC    $B2
+STA    $B2
+LDX    #$17
+LDY    #$02
+JSR    $AB47
+LDA    #$00
+STA    $FD
+STA    $2005
+STA    $FC
+STA    $2005
+LDA    #$01
+STA    $33
+JSR    $9D51
+PLA
+TAY
+PLA
+TAX
+PLA
+RTI
+LDA    $BD
+JSR    $AC82
+LDA    ($82), Y
+STA    $44
+INC    $9594
+LDY    #$06
+STY    $01
+LDY    #$00
+STY    $00
+LDA    #$00
+STA    ($00), Y
+DEY
+BNE    $FB
+DEC    $01
+BPL    $F7
+LDA    $0750
+CMP    #$12
+BNE    $21
+LDA    $0751
+CMP    #$34
+BNE    $1A
+LDA    $0752
+CMP    #$56
+BNE    $13
+LDA    $0753
+CMP    #$78
+BNE    $0C
+LDA    $0754
+CMP    #$9A
+BNE    $05
+JMP    $80BC
+LDX    #$00
+LDA    $AD67, X
+CMP    #$FF
+BEQ    $07
+STA    $0700, X
+INX
+JMP    $8095
+LDA    #$12
+STA    $0750
+LDA    #$34
+STA    $0751
+LDA    #$56
+STA    $0752
+LDA    #$78
+STA    $0753
+LDA    #$9A
+STA    $0754
+LDX    #$89
+STX    $17
+DEX
+STX    $18
+LDY    #$00
+STY    $FD
+STY    $2005
+LDY    #$00
+STY    $FC
+STY    $2005
+LDA    #$90
+STA    $FF
+STA    $2000
+LDA    #$06
+STA    $2001
+JSR    $E006
+JSR    $E003
+LDA    #$C0
+STA    $0100
+LDA    #$80
+STA    $0101
+LDA    #$35
+STA    $0103
+LDA    #$AC
+STA    $0104
+JSR    $AA52
+JSR    $AA78
+LDA    #$20
+JSR    $AA82
+LDA    #$24
+JSR    $AA82
+LDA    #$28
+JSR    $AA82
+LDA    #$2C
+JSR    $AA82
+LDA    #$EF
+LDX    #$04
+LDY    #$05
+JSR    $AC6A
+JSR    $AA6B
+JSR    $AA2F
+JSR    $AA5F
+JSR    $AA2F
+LDA    #$0E
+STA    $34
+LDA    #$00
+STA    $A7
+STA    $C0
+LDA    #$01
+STA    $BE
+LDA    #$00
+STA    $B2
+JSR    $8161
+CMP    $A7
+BNE    $03
+JSR    $AA2F
+LDA    $C0
+CMP    #$05
+BNE    $12
+LDA    $D2
+CMP    #$DF
+BNE    $0C
+LDA    #$DD
+STA    $D2
+LDA    #$00
+STA    $B2
+LDA    #$01
+STA    $C0
+JMP    $8138
+JSR    $819B
+RTS
+LDA    $C0
+JSR    $AC82
+BRK
+CMP    ($82), Y
+EOR    $5D81, X
+STA    ($F6, X)
+STA    $7620, X
+JSR    $81B2
+JSR    $8A0A
+JSR    $87AE
+JSR    $8BCE
+INC    $A7
+RTS
+LDA    $BE
+CMP    #$02
+BNE    $0C
+JSR    $8792
+JSR    $81D9
+JSR    $8A0A
+JSR    $87C8
+INC    $A7
+RTS
+LDA    $A7
+JSR    $AC82
+BEQ    $85
+STX    $84
+DEY
+STA    ($86, X)
+STA    ($16, X)
+LDA    $48
+JSR    $AC82
+STA    ($A2, X)
+STA    $9A6B, Y
+AND    $589E, Y
+STX    $3998
+ORA    ($9A), Y
+JSR    $89AE
+JSR    $88AB
+JSR    $8914
+RTS
+LDA    $48
+JSR    $AC82
+INC    $81, X
+LDX    #$99
+TXS
+AND    $589E, Y
+STX    $3998
+ORA    ($9A), Y
+JSR    $89AE
+JSR    $88AB
+JSR    $8914
+RTS
+JSR    $E003
+LDA    #$00
+STA    $BD
+JSR    $AA52
+JSR    $AA78
+LDA    #$00
+JSR    $ACB7
+LDA    #$00
+JSR    $ACCB
+JSR    $AA98
+LDA    $9820
+TAX
+CLV
+LDA    $6B20
+TAX
+JSR    $AA2F
+JSR    $AA5F
+JSR    $AA2F
+LDA    #$00
+LDX    #$02
+LDY    #$02
+JSR    $AC6A
+LDA    #$FF
+JSR    $A459
+LDA    #$FF
+STA    $A8
+LDA    $F5
+CMP    #$10
+BEQ    $07
+JSR    $AA2F
+DEC    $A8
+BNE    $F3
+INC    $C0
+RTS
+JSR    $E003
+LDA    #$00
+STA    $BD
+STA    $D0
+STA    $DF
+JSR    $AA52
+JSR    $AA78
+LDA    #$00
+JSR    $ACB7
+LDA    #$00
+JSR    $ACCB
+JSR    $AA98
+LDA    $9820
+TAX
+ORA    $20B2, Y
+TAX
+JSR    $AA2F
+JSR    $AA5F
+JSR    $AA2F
+LDA    #$00
+LDX    #$02
+LDY    #$02
+JSR    $AC6A
+LDA    #$00
+STA    $B2
+JSR    $AA2F
+LDA    $F5
+CMP    #$10
+BEQ    $09
+LDA    $B2
+CMP    #$05
+BEQ    $0B
+JMP    $828D
+LDA    #$02
+STA    $06F1
+INC    $C0
+RTS
+LDA    #$02
+STA    $06F1
+LDA    #$06
+STA    $C0
+RTS
+LDA    $FF
+AND    #$FC
+STA    $FF
+LDA    #$00
+STA    $FD
+STA    $2005
+STA    $FC
+STA    $2005
+RTS
+LDA    #$00
+STA    $64
+LDA    #$00
+STA    $C1
+LDA    #$04
+LDA    $C0
+RTS
+INC    $8000
+LDA    #$10
+JSR    $ACA3
+LDA    #$01
+STA    $BD
+JSR    $AA52
+JSR    $AA78
+JSR    $AA98
+LDA    $9820
+TAX
+LDX    $A9, Y
+BRK
+JSR    $ACB7
+LDA    #$00
+JSR    $ACCB
+JSR    $AA6B
+JSR    $AA2F
+JSR    $AA5F
+JSR    $AA2F
+LDX    $C2
+LDA    $85D2, X
+JSR    $9E07
+LDA    #$FF
+LDX    #$02
+LDY    #$02
+JSR    $AC6A
+LDA    $F5
+CMP    #$01
+BNE    $0C
+LDA    #$01
+STA    $C1
+LDA    #$01
+STA    $06F1
+JMP    $8335
+LDA    $F5
+CMP    #$02
+BNE    $09
+LDA    #$00
+STA    $C1
+LDA    #$01
+STA    $06F1
+LDA    $F5
+CMP    #$04
+BNE    $15
+LDA    #$01
+STA    $06F1
+LDA    $C2
+CMP    #$03
+BEQ    $23
+INC    $C2
+LDX    $C2
+LDA    $85D2, X
+JSR    $9E07
+LDA    $F5
+CMP    #$08
+BNE    $13
+LDA    #$01
+STA    $06F1
+LDA    $C2
+BEQ    $0A
+DEC    $C2
+LDX    $C2
+LDA    $85D2, X
+JSR    $9E07
+LDA    $F5
+CMP    #$10
+BNE    $08
+LDA    #$02
+STA    $06F1
+INC    $C0
+RTS
+LDA    $F5
+CMP    #$40
+BNE    $0C
+LDA    #$02
+STA    $06F1
+LDA    #$00
+STA    $B2
+DEC    $C0
+RTS
+LDY    #$00
+LDA    $C1
+ASL    A
+STA    $A8
+ASL    A
+ADC    $A8
+ASL    A
+ASL    A
+ASL    A
+ASL    A
+CLC
+ADC    #$3F
+STA    $A0
+LDA    #$3F
+STA    $A1
+LDA    #$01
+STA    $A2
+LDA    $B1
+AND    #$03
+BNE    $04
+LDA    #$02
+STA    $A2
+JSR    $8C27
+LDA    $C2
+ASL    A
+ASL    A
+ASL    A
+ASL    A
+CLC
+ADC    #$8F
+STA    $A1
+LDA    #$53
+STA    $A2
+LDA    #$67
+STA    $A0
+LDA    $B1
+AND    #$03
+BNE    $04
+LDA    #$02
+STA    $A2
+JSR    $8C27
+JSR    $AA2F
+JMP    $830B
+INC    $8000
+LDA    #$10
+JSR    $ACA3
+JSR    $E003
+LDA    #$01
+STA    $BD
+JSR    $AA52
+JSR    $AA78
+LDA    #$00
+JSR    $ACB7
+LDA    #$00
+JSR    $ACCB
+JSR    $AA98
+LDA    $9820
+TAX
+TSX
+LDA    $C1
+BNE    $05
+JSR    $AA98
+EOR    $20C9, X
+JSR    $AA6B
+JSR    $AA2F
+LDA    #$00
+STA    $2005
+LDA    #$00
+STA    $2005
+JSR    $AA5F
+JSR    $AA2F
+LDA    #$00
+STA    $AE
+STA    $AF
+LDA    $67
+CMP    #$0A
+BCC    $08
+SEC
+SBC    #$0A
+STA    $67
+JMP    $8428
+LDA    #$00
+STA    $B7
+LDA    $67
+STA    $47
+LDA    $79
+STA    $59
+LDA    $AE
+STA    $AD
+LDA    $F5
+STA    $B5
+JSR    $84AE
+LDA    $47
+STA    $67
+LDA    $59
+STA    $79
+LDA    $AD
+STA    $AE
+LDA    $F5
+CMP    #$10
+BNE    $19
+LDA    $F7
+CMP    #$90
+BNE    $07
+LDA    $67
+CLC
+ADC    #$0A
+STA    $67
+LDA    #$00
+STA    $A7
+LDA    #$02
+STA    $06F1
+INC    $C0
+RTS
+LDA    $F5
+CMP    #$40
+BNE    $08
+LDA    #$02
+STA    $06F1
+DEC    $C0
+RTS
+LDX    #$17
+LDY    #$02
+JSR    $AB47
+LDA    $17
+AND    #$0F
+CMP    #$0A
+BPL    $F1
+SBC    ($85), Y
+LDX    #$17
+LDY    #$02
+JSR    $AB47
+LDA    $17
+AND    #$0F
+CMP    #$0A
+BPL    $F1
+SBC    ($85), Y
+TXS
+JSR    $AA2F
+JMP    $8436
+LDA    $B5
+CMP    #$01
+BNE    $1C
+LDA    #$01
+STA    $06F1
+LDA    $AD
+BNE    $0B
+LDA    $47
+CMP    #$09
+BEQ    $0D
+INC    $47
+JMP    $84D0
+LDA    $59
+CMP    #$05
+BEQ    $02
+INC    $59
+LDA    $B5
+CMP    #$02
+BNE    $18
+LDA    #$01
+STA    $06F1
+LDA    $AD
+BNE    $09
+LDA    $47
+BEQ    $0B
+DEC    $47
+JMP    $84EE
+LDA    $59
+BEQ    $02
+DEC    $59
+LDA    $B5
+CMP    #$04
+BNE    $23
+LDA    #$01
+STA    $06F1
+LDA    $AD
+BNE    $0E
+LDA    $47
+CMP    #$05
+BPL    $14
+CLC
+ADC    #$05
+STA    $47
+JMP    $8517
+LDA    $59
+CMP    #$03
+BPL    $06
+ASL    $E6
+EOR    $59E6, Y
+INC    $59
+LDA    $B5
+CMP    #$08
+BNE    $23
+LDA    #$01
+STA    $06F1
+LDA    $AD
+BNE    $0E
+LDA    $47
+CMP    #$05
+BMI    $14
+SEC
+SBC    #$05
+STA    $47
+JMP    $8540
+LDA    $59
+CMP    #$03
+BMI    $06
+DEC    $59
+DEC    $59
+DEC    $59
+LDA    $C1
+BEQ    $11
+LDA    $B5
+CMP    #$80
+BNE    $0B
+LDA    #$01
+STA    $06F1
+LDA    $AD
+EOR    #$01
+STA    $AD
+LDA    $AD
+BNE    $06
+LDA    $B1
+AND    #$03
+BEQ    $22
+LDX    $47
+LDA    $85B2, X
+STA    $A1
+LDA    #$00
+STA    $A2
+LDX    $47
+LDA    $85BC, X
+STA    $A0
+LDA    $B7
+CMP    #$01
+BNE    $07
+CLC
+LDA    $A1
+ADC    #$50
+STA    $A1
+JSR    $8C27
+LDA    $C1
+BEQ    $2C
+LDA    $AD
+BEQ    $06
+LDA    $B1
+AND    #$03
+BEQ    $22
+LDX    $59
+LDA    $85C6, X
+STA    $A1
+LDA    #$00
+STA    $A2
+LDX    $59
+LDA    $85CC, X
+STA    $A0
+LDA    $B7
+CMP    #$01
+BNE    $07
+CLC
+LDA    $A1
+ADC    #$50
+STA    $A1
+JSR    $8C27
+RTS
+LDY    $9CBC
+LDY    $03BC
+ORA    $FF
+ASL    $07
+PHP
+LDA    $FF
+AND    #$FC
+STA    $FF
+STA    $2000
+LDA    #$00
+STA    $FD
+STA    $2005
+STA    $FC
+STA    $2005
+RTS
+JSR    $AA52
+JSR    $AA78
+LDA    #$03
+JSR    $ACB7
+LDA    #$03
+JSR    $ACCB
+JSR    $AA98
+LDY    $9820
+TAX
+LDA    #$20
+STA    $2006
+LDA    #$83
+STA    $2006
+LDA    $C1
+BNE    $24
+LDA    #$0A
+STA    $2007
+LDA    #$20
+STA    $2006
+LDA    #$B8
+STA    $2006
+LDA    $0730
+JSR    $9712
+LDA    $0731
+JSR    $9712
+LDA    $0732
+JSR    $9712
+JMP    $8693
+LDA    #$0B
+STA    $2007
+LDA    #$20
+STA    $2006
+LDA    #$B8
+STA    $2006
+LDA    $073C
+JSR    $9712
+LDA    $073D
+JSR    $9712
+LDA    $073E
+JSR    $9712
+LDX    #$00
+LDA    $86B0, X
+INX
+STA    $2006
+LDA    $86B0, X
+INX
+STA    $2006
+LDA    $86B0, X
+INX
+CMP    #$FE
+BEQ    $EA
+CMP    #$FD
+BEQ    $06
+STA    $2007
+JMP    $866D
+LDA    #$23
+STA    $2006
+LDA    #$3B
+STA    $2006
+LDA    $59
+AND    #$0F
+STA    $2007
+JMP    $8693
+JSR    $AA6B
+JSR    $AA2F
+JSR    $AA5F
+JSR    $AA2F
+LDA    #$01
+STA    $68
+STA    $88
+LDA    $67
+STA    $64
+LDA    $87
+STA    $84
+INC    $A7
+RTS
+SEC
+AND    $3939, Y
+AND    $3939, Y
+INC    $1723, X
+ORA    ($0E), Y
+BPL    $11
+ORA    ($1D), Y
+INC    $3723, X
+INC    $5723, X
+AND    $3E3E, X
+ROL    $3E3E, X
+ROL    $FD3F, X
+LDA    #$EF
+LDX    #$04
+LDY    #$04
+JSR    $AC6A
+LDX    #$0F
+LDA    #$00
+STA    $03EF, X
+DEX
+BNE    $FA
+LDA    #$05
+STA    $60
+STA    $80
+LDA    #$00
+STA    $61
+STA    $81
+STA    $69
+STA    $89
+STA    $65
+STA    $85
+STA    $BB
+STA    $BC
+STA    $73
+STA    $74
+STA    $75
+STA    $93
+STA    $94
+STA    $95
+STA    $70
+STA    $71
+STA    $90
+STA    $91
+STA    $A4
+STA    $D8
+STA    $D9
+STA    $DA
+STA    $DB
+STA    $BA
+STA    $CE
+STA    $CF
+STA    $D3
+STA    $D1
+STA    $19
+LDA    #$DD
+STA    $D2
+LDA    #$03
+STA    $BD
+LDA    #$A0
+STA    $6E
+STA    $8E
+JSR    $98EB
+STA    $62
+STA    $82
+JSR    $9969
+LDX    #$17
+LDY    #$02
+JSR    $AB47
+JSR    $98EB
+STA    $BF
+STA    $A6
+LDA    $C1
+BEQ    $06
+LDA    #$25
+STA    $70
+STA    $90
+LDA    #$47
+STA    $A3
+JSR    $AA2F
+JSR    $87DC
+LDX    $C2
+LDA    $85D2, X
+JSR    $9E07
+INC    $A7
+RTS
+LDA    #$01
+STA    $B7
+LDA    #$04
+STA    $B9
+LDA    $F5
+STA    $B5
+LDA    $F7
+STA    $B6
+LDX    #$1F
+LDA    $60, X
+STA    $40, X
+DEX
+CPX    #$FF
+BNE    $F7
+RTS
+LDA    #$02
+STA    $B7
+LDA    #$05
+STA    $B9
+LDA    $F6
+STA    $B5
+LDA    $F8
+STA    $B6
+LDX    #$1F
+LDA    $80, X
+STA    $40, X
+DEX
+CPX    #$FF
+BNE    $F7
+RTS
+LDX    #$1F
+LDA    $40, X
+STA    $60, X
+DEX
+CPX    #$FF
+BNE    $F7
+LDA    $BE
+CMP    #$01
+BEQ    $08
+LDX    $BB
+LDA    $BC
+STA    $BB
+STX    $BC
+RTS
+LDX    #$1F
+LDA    $40, X
+STA    $80, X
+DEX
+CPX    #$FF
+BNE    $F7
+LDX    $BB
+LDA    $BC
+STA    $BB
+STX    $BC
+RTS
+LDA    $C1
+BNE    $03
+JMP    $8875
+LDA    #$0C
+STA    $A8
+LDA    $A8
+BEQ    $5F
+LDA    #$14
+SEC
+SPC    $A8
+STA    $A9
+LDA    #$00
+STA    $69
+STA    $89
+LDA    #$09
+STA    $AA
+LDX    #$17
+LDY    #$02
+JSR    $AB47
+LDA    $17
+AND    #$07
+TAY
+LDA    $887C, Y
+STA    $AB
+LDX    $A9
+LDA    $96D6, X
+CLC
+ADC    $AA
+TAY
+LDA    $AB
+STA    $0400, Y
+LDA    $AA
+BEQ    $05
+DEC    $AA
+JMP    $87FC
+LDX    #$17
+LDY    #$02
+JSR    $AB47
+LDA    $17
+AND    #$0F
+CMP    #$0A
+BPL    $F1
+SBC    ($85), Y
+LDY    $A9A6
+LDA    $96D6, X
+CLC
+ADC    $AC
+TAY
+LDA    #$EF
+STA    $0400, Y
+JSR    $AA2F
+DEC    $A8
+BNE    $9D
+LDX    #$C8
+LDA    $0400, X
+STA    $0500, X
+DEX
+BNE    $F7
+LDX    $79
+LDA    $8876, X
+TAY
+LDA    #$EF
+STA    $0400, Y
+DEY
+CPY    #$FF
+BNE    $F8
+LDX    $99
+LDA    $8876, X
+TAY
+LDA    #$EF
+STA    $0500, Y
+DEY
+CPY    #$FF
+BNE    $F8
+RTS
+INY
+TAX
+STX    $78, Y
+BVC    $EF
+ADC    $EF7D, X
+LDA    #$03
+JSR    $ACB7
+LDA    #$03
+JSR    $ACCB
+LDA    #$00
+STA    $B3
+INC    $65
+INC    $85
+LDA    $A4
+BEQ    $02
+INC    $A4
+LDA    $F5
+AND    #$20
+BEQ    $06
+LDA    $DF
+EOR    #$01
+STA    $DF
+INC    $A7
+RTS
+LDA    $42
+STA    $AE
+CLC
+LDA    $42
+ASL    A
+TAX
+LDA    $B5
+AND    #$80
+CMP    #$80
+BNE    $13
+INX
+LDA    $88EE, X
+STA    $42
+JSR    $948B
+BNE    $22
+LDA    #$05
+STA    $06F1
+JMP    $88ED
+LDA    $B5
+AND    #$40
+CMP    #$40
+BNE    $16
+LDA    $88EE, X
+STA    $42
+JSR    $948B
+BNE    $08
+LDA    #$05
+STA    $06F1
+JMP    $88ED
+LDA    $AE
+STA    $42
+RTS
+ORA    ($00, X)
+ORA    ($03, X)
+BRK
+ORA    $04
+ASL    $05
+ASL    $04
+ORA    #$09
+PHP
+PHP
+ASL    A
+ASL    A
+BPL    $0E
+ASL    $0F0D
+ASL    $0F10
+ORA    $1212
+ORA    ($11), Y
+LDA    $4E
+BPL    $0A
+ASL    A
+LDA    $B5
+AND    #$04
+BEQ    $6B
+LDA    #$00
+STA    $4E
+BNE    $15
+LDA    $B6
+AND    #$03
+BNE    $49
+LDA    $B5
+AND    #$0F
+CMP    #$04
+BNE    $41
+LDA    #$01
+STA    $4E
+JMP    $8973
+LDA    $B6
+AND    #$0F
+CMP    #$04
+BEQ    $09
+LDA    #$00
+STA    $4E
+STA    $4F
+JMP    $8973
+INC    $4E
+LDA    $4E
+CMP    #$03
+BCC    $21
+LDA    #$01
+STA    $4E
+INC    $4F
+LDA    #$00
+STA    $45
+LDA    $41
+STA    $AE
+INC    $41
+JSR    $948B
+BEQ    $0B
+LDA    $AE
+STA    $41
+LDA    #$02
+STA    $48
+JSR    $9CAF
+RTS
+LDA    #$01
+LDX    $44
+CPX    #$1D
+BCS    $03
+LDA    $898E, X
+STA    $AF
+LDA    $45
+CMP    $AF
+BPL    $D2
+JMP    $8972
+INC    $4E
+JMP    $8972
+BMI    $2B
+ROL    $21
+ORA    $0608
+ORA    $05
+ORA    $04
+ORA    ($01, X)
+ORA    ($A5, X)
+RTI
+STA    $AE
+LDA    $B6
+AND    #$04
+BNE    $51
+LDA    $B5
+AND    #$03
+BNE    $15
+LDA    $B6
+AND    #$03
+BEQ    $45
+INC    $46
+LDA    $46
+CMP    #$10
+BMI    $3D
+LDA    #$0A
+STA    $46
+JMP    $89D7
+LDA    #$00
+STA    $46
+LDA    $B6
+AND    #$01
+BEQ    $0F
+INC    $40
+JSR    $948B
+BNE    $1D
+LDA    #$03
+STA    $06F1
+JMP    $8A09
+LDA    $B6
+AND    #$02
+BEQ    $17
+DEC    $40
+JSR    $948B
+BNE    $08
+LDA    #$03
+STA    $06F1
+JMP    $8A09
+LDA    $AE
+STA    $40
+LDA    #$10
+STA    $46
+RTS
+LDA    $40
+ASL    A
+ASL    A
+ASL    A
+ADC    #$60
+STA    $AA
+LDA    $BE
+CMP    #$01
+BEQ    $13
+LDA    $AA
+SEC
+SBC    #$40
+STA    $AA
+LDA    $B7
+CMP    #$01
+BEQ    $06
+LDA    $AA
+ADC    #$6F
+STA    $AA
+CLC
+LDA    $41
+ROL    A
+ROL    A
+ROL    A
+ADC    #$2F
+STA    $AB
+LDA    $42
+STA    $AC
+CLC
+LDA    $AC
+ROL    A
+ROL    A
+STA    $A8
+ROL    A
+ADC    $A8
+TAX
+LDY    $B3
+LDA    #$04
+STA    $A9
+LDA    $8A9C, X
+ASL    A
+ASL    A
+ASL    A
+CLC
+ADC    $AB
+STA    $0200, Y
+STA    $AE
+INC    $B3
+INY
+INX
+LDA    $8A9C, X
+STA    $0200, Y
+INC    $B3
+INY
+INX
+LDA    #$02
+STA    $0200, Y
+LDA    $AE
+CMP    #$2F
+BCS    $12
+INC    $B3
+DEY
+LDA    #$FF
+STA    $0200, Y
+INY
+INY
+LDA    #$00
+STA    $0200, Y
+JMP    $8A93
+INC    $B3
+INY
+LDA    $8A9C, X
+ASL    A
+ASL    A
+ASL    A
+CLC
+ADC    $AA
+STA    $0200, Y
+INC    $B3
+INY
+INX
+DEC    $A9
+BNE    $B0
+RTS
+BRK
+BRK
+BRK
+BRK
+ORA    ($FF, X)
+BRK
+BRK
+BRK
+BRK
+BRK
+ORA    ($01, X)
+BRK
+BRK
+BRK
+BRK
+BRK
+ORA    ($01, X)
+BRK
+BRK
+BRK
+BRK
+BRK
+ORA    ($7B, X)
+BRK
+ADC    $0000, X
+ADC    $0100, X
+ADC    $01FF, X
+ADC    $FF00, X
+ADC    $00FF, X
+ADC    $00FF, X
+ADC    $0000, X
+ADC    $FF01, X
+ADC    $FF00, X
+ADC    $0001, X
+ADC    $0100, X
+ADC    $0000, X
+ADC    $00FF, X
+ADC    $0000, X
+ADC    $0101, X
+ADC    $0001, X
+BRK
+BRK
+ORA    ($7C, X)
+BRK
+ORA    ($7C, X)
+ORA    ($FF, X)
+ORA    ($00, X)
+BRK
+BRK
+ORA    ($01, X)
+BRK
+BRK
+BRK
+BRK
+ORA    ($7B, X)
+ORA    ($7B, X)
+BRK
+BRK
+ADC    $0000, X
+ADC    $0101, X
+ADC    $01FF, X
+ADC    $FF00, X
+ADC    $0000, X
+ADC    $0000, X
+ADC    $0101, X
+ADC    $FF01, X
+BRK
+BRK
+BRK
+ORA    ($7C, X)
+BRK
+ORA    ($7C, X)
+ORA    ($00, X)
+BRK
+BRK
+BRK
+ORA    ($01, X)
+BRK
+BRK
+BRK
+ORA    ($7C, X)
+BRK
+ORA    ($00, X)
+BRK
+BRK
+BRK
+ORA    ($FE, X)
+BRK
+BRK
+BRK
+BRK
+ORA    ($7B, X)
+BRK
+BRK
+INC    $7B00, X
+BRK
+BRK
+BRK
+ORA    ($00, X)
+BRK
+BRK
+BRK
+BRK
+BRK
+BRK
+BRK
+LDA    $A2
+ASL    A
+ASL    A
+STA    $A8
+ASL    A
+CLC
+ADC    $A8
+TAY
+LDX    $B3
+LDA    #$04
+STA    $A9
+LDA    $8A9C, Y
+CLC
+ASL    A
+ASL    A
+ASL    A
+ADC    $A1
+STA    $0200, X
+INX
+INY
+LDA    $8A9C, Y
+STA    $0200, X
+INX
+INY
+LDA    #$02
+STA    $0200, X
+INX
+LDA    $8A9C, Y
+CLC
+ASL    A
+ASL    A
+ASL    A
+ADC    $A0
+STA    $0200, X
+INX
+INY
+DEC    $A9
+BNE    $D2
+STX    $B3
+RTS
+LDA    $DF
+BNE    $12
+LDA    #$C8
+STA    $A0
+LDA    #$77
+STA    $A1
+LDX    $BF
+LDA    $8BE5, X
+STA    $A2
+JMP    $8C27
+RTS
+BRK
+BRK
+ASL    $00
+BRK
+BRK
+BRK
+ORA    #$08
+BRK
+BRK
+BRK
+ASL    A
+BRK
+BRK
+BRK
+BRK
+BRK
+BRK
+BRK
+BRK
+BRK
+ORA    ($00), Y
+BPL    $00
+BRK
+BRK
+BRK
+BRK
+BRK
+ORA    $00, X
+INC    $FCFD, X
+SBC    $FFFE, X
+BRK
+ORA    ($02, X)
+ORA    $06
+PHP
+ORA    #$0A
+ORA    $0F0E
+BPL    $11
+ORA    ($12), Y
+CLC
+LDA    $A2
+ROL    A
+TAX
+LDA    $8C6C, X
+STA    $A8
+INX
+LDA    $8C6C, X
+STA    $A9
+LDX    $B3
+LDY    #$00
+LDA    ($A8), Y
+CMP    #$FF
+BEQ    $2A
+CLC
+ADC    $A1
+STA    $0200, X
+INX
+INY
+LDA    ($A8), Y
+STA    $0200, X
+INX
+INY
+LDA    ($A8), Y
+STA    $0200, X
+INX
+INY
+LDA    ($A8), Y
+CLC
+ADC    $A0
+STA    $0200, X
+INX
+INY
+LDA    #$04
+CLC
+ADC    $B3
+STA    $B3
+JMP    $8C3B
+RTS
+JSR    $318D
+STA    $8D3A
+STA    $8D54
+STA    $8D69
+STA    $8D8B
+STA    $8DAD
+LDX    $CF8D, Y
+STA    $8DE0
+CPX    #$8D
+SPC    $8D
+INC    $8D, X
+STX    $8E18
+AND    #$8E
+STX    $8E4B
+STX    $8E6D
+STX    $8E83
+STY    $A58E
+STX    $8EBE
+STX    $8EF8
+ORA    $2E8F, Y
+JMP    $558F
+LSR    $7F8F, X
+TYA
+LDA    ($8F, X)
+DEC    $8F
+BCC    $29
+BCC    $29
+BCC    $2E
+BCC    $33
+BCC    $44
+BCC    $55
+BCC    $66
+BCC    $77
+BCC    $88
+BCC    $99
+BCC    $B2
+BCC    $CB
+BCC    $E4
+BCC    $FD
+BCC    $26
+STA    ($4F), Y
+STA    ($78), Y
+STA    ($9D), Y
+STA    ($B2), Y
+STA    ($C7), Y
+STA    ($CC), Y
+STA    ($D1), Y
+STA    ($D6), Y
+STA    ($DF), Y
+STA    ($E4), Y
+STA    ($E9), Y
+STA    ($0A), Y
+ADC    $92, X
+ROR    $8F92
+PLA
+STA    $D293, X
+ORA    ($94), Y
+STY    $27, X
+STY    $30, X
+STY    $39, X
+STY    $62, X
+STY    $8B, X
+STY    $8B, X
+STY    $8B, X
+STY    $8B, X
+STY    $00, X
+JSR    $0000
+JSR    $0808
+JSR    $0800
+JSR    $FF08
+BRK
+BRK
+BRK
+BRK
+RTI
+BRK
+BRK
+BRK
+BRK
+ORA    $0002, Y
+BRK
+ASL    A
+PHP
+BRK
+ASL    $1002, X
+BRK
+CLC
+BRK
+ASL    $2002
+BRK
+ORA    $0000, Y
+BRK
+ASL    A
+BRK
+PHP
+BRK
+ASL    $1000, X
+BRK
+BRK
+CLC
+BRK
+ASL    $2000
+BRK
+BRK
+BRK
+PHP
+BRK
+ADC    $0402, X
+BRK
+ADC    $0C02, X
+PHP
+ADC    $FC02, X
+PHP
+ADC    $0402, X
+BRK
+BRK
+PHP
+PHP
+BRK
+ADC    $FC02, X
+BRK
+ADC    $0402, X
+BRK
+ADC    $0C02, X
+PHP
+ADC    $0C02, X
+BRK
+BRK
+BRK
+PHP
+BRK
+BRK
+BRK
+PHP
+PHP
+BRK
+PHP
+PHP
+SED
+BRK
+PHP
+BPL    $FF
+BRK
+AND    ($00, X)
+ASL    A
+BRK
+ADC    $0602, X
+BRK
+ADC    $0E02, X
+PHP
+ADC    $FE02, X
+PHP
+ADC    $0602, X
+BRK
+BRK
+PHP
+PHP
+ASL    A
+PHP
+ADC    $0002, X
+PHP
+ADC    $0802, X
+PHP
+ADC    $1002, X
+BPL    $7D
+ADC    $1002, X
+PHP
+SED
+PHP
+BRK
+PHP
+PHP
+BPL    $7C
+SED
+BRK
+BRK
+BRK
+PHP
+PHP
+BRK
+PHP
+PHP
+PHP
+SED
+PHP
+BRK
+PHP
+PHP
+PHP
+BPL    $FF
+BEQ    $95
+ORA    ($10, X)
+SED
+ORA    ($00, X)
+SED
+LDY    $01
+PHP
+SED
+LDA    $01
+BPL    $FF
+SED
+ORA    ($00, X)
+SED
+STY    $01
+PHP
+SED
+STA    $01
+BPL    $FF
+BEQ    $90
+BRK
+BRK
+SED
+LDY    #$00
+BRK
+BEQ    $C4
+BRK
+BRK
+SED
+BRK
+BRK
+INX
+PLP
+BRK
+PHP
+INX
+ROL    A
+BRK
+BPL    $F0
+BEQ    $C8
+BPL    $F8
+SED
+DEC    $03, X
+BRK
+SED
+PHP
+SED
+CLD
+BPL    $FF
+INX
+PLP
+BRK
+PHP
+INX
+ROL    A
+BRK
+BPL    $F0
+BEQ    $B9
+BPL    $F8
+SED
+INC    $03, X
+BRK
+SED
+PHP
+SED
+SED
+BPL    $FF
+INX
+CMP    #$02
+BRK
+INX
+BPL    $F0
+BEQ    $D9
+BRK
+BEQ    $DB
+BPL    $F8
+SED
+SBC    #$02
+BRK
+SED
+BPL    $FF
+INX
+LSR    $02
+SED
+INX
+BRK
+INX
+BPL    $F0
+BEQ    $56
+SED
+BEQ    $57
+BRK
+BEQ    $DB
+BPL    $F8
+SED
+BRK
+SED
+BPL    $FF
+INX
+CMP    #$02
+BRK
+INX
+ROR    $02
+BPL    $E8
+INX
+CLC
+BEQ    $D9
+BRK
+BEQ    $76
+BPL    $F0
+BEQ    $77
+CLC
+SED
+SBC    #$02
+BRK
+SED
+STX    $02
+BPL    $FF
+SED
+SBC    ($00, X)
+PHP
+SED
+BRK
+BPL    $00
+BRK
+SBC    ($00), Y
+PHP
+BRK
+CMP    $00
+BPL    $00
+BRK
+CMP    $00, X
+CLC
+SED
+CPX    $00
+PHP
+SED
+SPC    $00
+BPL    $00
+BRK
+BRK
+PHP
+BRK
+SBC    $00, X
+BPL    $00
+BRK
+BRK
+CLC
+BRK
+ORA    ($00, X)
+BRK
+ORA    ($08, X)
+BRK
+ORA    ($00, X)
+BRK
+ORA    ($08, X)
+PHP
+TAY
+CLC
+PHP
+LDA    #$23
+JSR    $08FF
+TAX
+BPL    $08
+PHP
+CLC
+PHP
+LDY    $2023
+PHP
+LDA    $2823
+BPL    $BA
+TSX
+BPL    $10
+BPL    $BB
+CLC
+BPL    $BC
+LDY    $2023, X
+BPL    $BD
+LDA    $2823, X
+BRK
+RTS
+AND    ($00, X)
+BRK
+ADC    ($21, X)
+PHP
+BRK
+AND    ($10, X)
+PHP
+BVS    $21
+BRK
+PHP
+ADC    ($21), Y
+PHP
+PHP
+AND    ($10, X)
+BRK
+AND    ($00, X)
+BRK
+STA    ($21, X)
+PHP
+BEQ    $30
+BRK
+BEQ    $31
+PHP
+BEQ    $32
+BPL    $F8
+SED
+RTI
+BRK
+SED
+EOR    ($03, X)
+PHP
+SED
+BPL    $00
+BRK
+BVC    $03
+BRK
+BRK
+EOR    ($03), Y
+PHP
+BRK
+BPL    $FF
+SED
+BRK
+SED
+BIT    $03
+PHP
+SED
+AND    $03
+BPL    $00
+BRK
+BRK
+BRK
+PHP
+BRK
+AND    $03, X
+BPL    $FF
+BEQ    $30
+BRK
+BRK
+BEQ    $31
+BRK
+PHP
+BEQ    $32
+BRK
+BPL    $F8
+SED
+AND    #$00
+BRK
+SED
+EOR    ($00, X)
+PHP
+SED
+BRK
+BPL    $00
+BRK
+BIT    $0000
+BRK
+AND    $0800
+BRK
+ROL    $1000
+BEQ    $32
+RTI
+BRK
+BEQ    $31
+RTI
+PHP
+BEQ    $30
+RTI
+BPL    $F8
+SED
+RTI
+BRK
+SED
+EOR    ($40, X)
+PHP
+SED
+AND    #$40
+BPL    $00
+BRK
+ROL    $0040
+BRK
+AND    $0840
+BRK
+BIT    $1040
+BRK
+JSR    $0023
+BRK
+AND    ($23, X)
+BRK
+SED
+AND    ($00, X)
+SED
+AND    ($08, X)
+BRK
+AND    ($00, X)
+BRK
+AND    ($08, X)
+SED
+BIT    $21
+BRK
+SED
+AND    $21
+PHP
+BRK
+AND    ($00, X)
+BRK
+AND    $21, X
+PHP
+SED
+ROL    $21
+BEQ    $F8
+AND    ($F8, X)
+BRK
+ROL    $21, X
+BEQ    $00
+AND    ($F8, X)
+SED
+PLP
+AND    ($F0, X)
+SED
+AND    ($F8, X)
+BRK
+AND    #$21
+BEQ    $00
+AND    ($F8, X)
+SED
+LSR    $21
+BEQ    $F8
+AND    ($F8, X)
+BRK
+LSR    $21, X
+BEQ    $00
+AND    ($F8, X)
+SED
+LSR    $21
+BEQ    $F8
+AND    ($F8, X)
+BRK
+ROR    $21
+BEQ    $00
+AND    ($F8, X)
+SED
+BRK
+SED
+PHP
+SED
+EOR    $22
+BPL    $00
+BRK
+BRK
+BRK
+PHP
+BRK
+EOR    $22, X
+BPL    $FF
+SED
+BRK
+SED
+PHP
+SED
+ADC    $22
+BPL    $00
+BRK
+BRK
+BRK
+PHP
+BRK
+ADC    $22, X
+BPL    $FF
+SED
+RTI
+AND    ($E8, X)
+SED
+EOR    ($21, X)
+BEQ    $F8
+AND    ($F8, X)
+BRK
+BVC    $21
+INX
+BRK
+EOR    ($21), Y
+BEQ    $00
+AND    ($F8, X)
+SED
+RTI
+AND    ($E8, X)
+SED
+EOR    ($21, X)
+BEQ    $F8
+AND    ($F8, X)
+BRK
+BVC    $21
+INX
+BRK
+BMI    $21
+BEQ    $00
+AND    ($F8, X)
+SED
+BCC    $23
+PHP
+SED
+LDX    #$23
+BPL    $00
+BRK
+STA    ($23), Y
+BEQ    $00
+SED
+BRK
+BCS    $23
+BRK
+BRK
+LDY    #$23
+PHP
+BRK
+BPL    $00
+BRK
+CLC
+PHP
+CPY    #$23
+BRK
+PHP
+CMP    ($23, X)
+PHP
+SED
+LDA    ($23, X)
+PHP
+SED
+LDX    #$23
+BPL    $00
+BRK
+STA    ($23), Y
+BEQ    $00
+SED
+BRK
+BCS    $23
+BRK
+BRK
+LDA    ($23), Y
+PHP
+BRK
+BPL    $00
+BRK
+CLC
+PHP
+CPY    #$23
+BRK
+PHP
+CMP    ($23, X)
+PHP
+SED
+AND    ($F0, X)
+BRK
+SBC    ($21, X)
+CPX    #$00
+AND    ($E8, X)
+BRK
+AND    ($F0, X)
+PHP
+BEQ    $21
+CLD
+PHP
+SBC    ($21), Y
+CPX    #$08
+AND    ($E8, X)
+PHP
+AND    ($F0, X)
+PHP
+CMP    ($21), Y
+SED
+PHP
+AND    ($00, X)
+SED
+AND    ($F0, X)
+BRK
+SBC    ($21, X)
+CPX    #$00
+AND    ($E8, X)
+BRK
+AND    ($F0, X)
+PHP
+BEQ    $21
+CLD
+PHP
+SBC    ($21), Y
+CPX    #$08
+AND    ($E8, X)
+PHP
+AND    ($F0, X)
+PHP
+BNE    $21
+SED
+SED
+INX
+SED
+STY    $23
+BEQ    $F8
+STA    $23
+SED
+BRK
+INX
+BRK
+STY    $23, X
+BEQ    $FF
+SED
+INX
+SED
+LDY    $23
+BEQ    $F8
+LDA    $23
+SED
+BRK
+INX
+BRK
+STY    $23, X
+BEQ    $FF
+BRK
+LDX    $23
+BRK
+PHP
+BRK
+PHP
+BRK
+SED
+LDY    $21, X
+BRK
+BRK
+CPY    $21
+BRK
+PHP
+BRK
+PHP
+CPX    $23
+BRK
+INX
+LDA    $23, X
+BRK
+INX
+LDX    $23, Y
+PHP
+BEQ    $C5
+BRK
+BEQ    $C6
+PHP
+SED
+CMP    $23, X
+BRK
+SED
+DEC    $23, X
+PHP
+BRK
+SPC    $23
+BRK
+BRK
+INC    $23
+PHP
+PHP
+SBC    $23, X
+BRK
+PHP
+INC    $23, X
+PHP
+PHP
+BRK
+PHP
+CLV
+PHP
+BNE    $C2
+AND    ($08, X)
+BNE    $C3
+AND    ($10, X)
+CLD
+AND    ($08, X)
+CLD
+AND    ($10, X)
+CPX    #$DB
+AND    ($08, X)
+CPX    #$FB
+AND    ($10, X)
+INX
+AND    ($00, X)
+INX
+INY
+AND    ($08, X)
+INX
+CMP    #$21
+BPL    $E8
+INX
+DEX
+AND    ($18, X)
+BEQ    $D7
+AND    ($00, X)
+BEQ    $D8
+AND    ($08, X)
+BEQ    $D9
+AND    ($10, X)
+BEQ    $DA
+AND    ($18, X)
+SED
+AND    ($00, X)
+SED
+INX
+AND    ($08, X)
+SED
+SBC    #$21
+BPL    $F8
+SED
+NOP
+AND    ($18, X)
+BRK
+AND    ($00, X)
+BRK
+SED
+AND    ($08, X)
+BRK
+SBC    $1021, Y
+BRK
+AND    ($18, X)
+PHP
+ROL    A
+PHP
+PHP
+BPL    $FF
+PHP
+BIT    $0823
+PHP
+AND    $1023
+BPL    $2E
+ROL    $0823
+BPL    $2F
+BPL    $FF
+INY
+SEC
+JSR    $39D0
+PHP
+BNE    $3B
+CLC
+BNE    $3C
+JSR    $3ED0
+BMI    $D0
+SEC
+CLD
+PHA
+BRK
+CLD
+EOR    #$23
+PHP
+CLD
+LSR    A
+BPL    $D8
+CLD
+CLC
+CLD
+JMP    $2023
+CLD
+EOR    $2823
+CLD
+LSR    $3020
+CLD
+JSR    $E038
+CLI
+BRK
+CPX    #$59
+PHP
+CPX    #$5A
+BPL    $E0
+CPX    #$5B
+CLC
+CPX    #$5C
+JSR    $5DE0
+PLP
+CPX    #$5E
+JSR    $E030
+JSR    $E838
+PLA
+BRK
+INX
+ADC    #$23
+PHP
+INX
+ROR    A
+BPL    $E8
+INX
+CLC
+INX
+JMP    $23
+JSR    $6DE8
+PLP
+INX
+ROR    $3023, X
+INX
+SEC
+BEQ    $78
+BRK
+BEQ    $79
+PHP
+BEQ    $7A
+BPL    $F0
+BEQ    $7B
+CLC
+BEQ    $7C
+JSR    $7DF0
+PLP
+BEQ    $7E
+BMI    $F0
+SEC
+SED
+DEY
+JSR    $F800
+JSR    $F808
+TXA
+JSR    $F810
+JSR    $F818
+STY    $2020
+SED
+STA    $2820
+SED
+STX    $3020
+SED
+JSR    $0038
+TYA
+JSR    $0000
+STA    $0820, Y
+BRK
+TXS
+JSR    $0010
+JSR    $0018
+JSR    $0020
+STA    $2820, X
+BRK
+JSR    $0030
+JSR    $FF38
+CPX    #$91
+AND    ($08, X)
+CPX    #$92
+AND    ($10, X)
+INX
+LDY    #$21
+BRK
+INX
+LDA    ($21, X)
+PHP
+INX
+LDX    #$21
+BPL    $F0
+BEQ    $B0
+AND    ($00, X)
+BEQ    $B1
+AND    ($08, X)
+BEQ    $B2
+AND    ($10, X)
+SED
+CPY    #$21
+BRK
+SED
+CMP    ($21, X)
+PHP
+SED
+AND    ($10, X)
+BRK
+BNE    $21
+BRK
+BRK
+AND    ($10, X)
+CPX    #$C4
+AND    ($08, X)
+CPX    #$C5
+AND    ($10, X)
+INX
+AND    ($00, X)
+INX
+AND    ($08, X)
+INX
+CMP    $21, X
+BPL    $F0
+BEQ    $E3
+AND    ($00, X)
+BEQ    $E4
+AND    ($08, X)
+BEQ    $E5
+AND    ($10, X)
+SED
+AND    ($00, X)
+SED
+AND    ($08, X)
+SED
+SBC    $21, X
+BPL    $00
+BRK
+AND    ($00, X)
+BRK
+LDY    $21, X
+PHP
+BEQ    $39
+SED
+TAX
+BRK
+SED
+PHP
+BRK
+TSX
+BRK
+BRK
+PHP
+BEQ    $3A
+SED
+LDY    $0023
+SED
+LDA    $0823
+BRK
+LDY    $0023, X
+BRK
+LDA    $0823, X
+BEQ    $38
+PHP
+SED
+EOR    #$23
+BRK
+SED
+LSR    A
+PHP
+BRK
+BRK
+BRK
+PHP
+SED
+LSR    $0020
+SED
+JSR    $0008
+LSR    $0020, X
+BRK
+JSR    $FF08
+PHP
+PHP
+PHA
+BPL    $58
+CLI
+BRK
+BRK
+BRK
+BRK
+RTI
+LSR    A
+INX
+LDA    #$21
+BRK
+INX
+TAX
+AND    ($08, X)
+BEQ    $B8
+AND    ($F8, X)
+BEQ    $B9
+AND    ($00, X)
+BEQ    $BA
+AND    ($08, X)
+SED
+CMP    #$21
+BRK
+SED
+DEX
+AND    ($08, X)
+SED
+AND    ($10, X)
+BRK
+CMP    $0021, Y
+BRK
+AND    ($08, X)
+INX
+LDA    $0021
+INX
+LDX    $0821
+BEQ    $BC
+AND    ($F8, X)
+BEQ    $BD
+AND    ($00, X)
+BEQ    $BE
+AND    ($08, X)
+SED
+CMP    $0021
+SED
+DEC    $0821
+SED
+AND    ($10, X)
+BRK
+CMP    $0021, X
+BRK
+DEC    $0821, X
+LDA    $41
+ASL    A
+STA    $A8
+ASL    A
+ASL    A
+CLC
+ADC    $A8
+ADC    $40
+STA    $A8
+LDA    $42
+ASL    A
+ASL    A
+STA    $A9
+ASL    A
+CLC
+ADC    $A9
+TAX
+LDY    #$00
+LDA    #$04
+STA    $AA
+LDA    $8A9C, X
+CLC
+ADC    $41
+ADC    #$02
+CMP    #$16
+BCS    $33
+LDA    $8A9C, X
+ASL    A
+STA    $AB
+ASL    A
+ASL    A
+CLC
+ADC    $AB
+CLC
+ADC    $A8
+STA    $AD
+INX
+INX
+LDA    $8A9C, X
+CLC
+ADC    $AD
+TAY
+LDA    ($B8), Y
+CMP    #$EF
+BCC    $14
+LDA    $8A9C, X
+CLC
+ADC    $40
+CMP    #$0A
+BCS    $0A
+INX
+DEC    $AA
+BNE    $C6
+LDA    #$00
+STA    $A8
+RTS
+LDA    #$FF
+STA    $A8
+RTS
+LDA    $68
+CMP    #$04
+BNE    $2E
+LDA    #$04
+STA    $B9
+LDA    $72
+STA    $52
+LDA    $6A
+STA    $4A
+LDA    $6B
+STA    $4B
+LDA    $6C
+STA    $4C
+LDA    $6D
+STA    $4D
+LDA    $68
+STA    $48
+JSR    $977F
+LDA    $52
+STA    $72
+LDA    $48
+STA    $68
+LDA    #$00
+STA    $69
+JMP    $953A
+LDA    $69
+STA    $49
+LDA    #$04
+STA    $B9
+JSR    $9725
+JSR    $9725
+JSR    $9725
+JSR    $9725
+LDA    $49
+STA    $69
+LDA    $BE
+CMP    #$02
+BNE    $4C
+LDA    $88
+CMP    #$04
+BNE    $2E
+LDA    #$05
+STA    $B9
+LDA    $92
+STA    $52
+LDA    $8A
+STA    $4A
+LDA    $8B
+STA    $4B
+LDA    $8C
+STA    $4C
+LDA    $8D
+STA    $4D
+LDA    $88
+STA    $48
+JSR    $977F
+LDA    $52
+STA    $92
+LDA    $48
+STA    $88
+LDA    #$00
+STA    $89
+JMP    $958C
+LDA    $89
+STA    $49
+LDA    #$05
+STA    $B9
+JSR    $9725
+JSR    $9725
+JSR    $9725
+JSR    $9725
+LDA    $49
+STA    $89
+LDA    $A3
+AND    #$01
+BEQ    $51
+LDA    $BE
+CMP    #$02
+BEQ    $1D
+LDA    #$20
+STA    $2006
+LDA    #$73
+STA    $2006
+LDA    $71
+STA    $2007
+LDA    $70
+JSR    $9712
+LDA    $A3
+AND    #$FE
+STA    $A3
+JMP    $95E3
+LDA    #$20
+STA    $2006
+LDA    #$68
+STA    $2006
+LDA    $71
+STA    $2007
+LDA    $70
+JSR    $9712
+LDA    #$20
+STA    $2006
+LDA    #$7A
+STA    $2006
+LDA    $91
+STA    $2007
+LDA    $90
+JSR    $9712
+LDA    $A3
+AND    #$FE
+STA    $A3
+LDA    $A3
+AND    #$02
+BEQ    $25
+LDA    $BE
+CMP    #$02
+BEQ    $1F
+LDX    $64
+LDA    $96B8, X
+STA    $A8
+LDA    #$22
+STA    $2006
+LDA    #$BA
+STA    $2006
+LDA    $A8
+JSR    $9712
+JSR    $9808
+LDA    $A3
+AND    #$FD
+STA    $A3
+LDA    $BE
+CMP    #$02
+BEQ    $25
+LDA    $A3
+AND    #$04
+BEQ    $1F
+LDA    #$21
+STA    $2006
+LDA    #$18
+STA    $2006
+LDA    $75
+JSR    $9712
+LDA    $74
+JSR    $9712
+LDA    $73
+JSR    $9712
+LDA    $A3
+AND    #$FB
+STA    $A3
+LDA    $BE
+CMP    #$02
+BEQ    $34
+LDA    $A3
+AND    #$40
+BEQ    $2E
+LDA    #$00
+STA    $B0
+LDA    $B0
+ASL    A
+TAX
+LDA    $96AA, X
+STA    $2006
+LDA    $96AB, X
+STA    $2006
+LDA    $03F1, X
+STA    $2007
+LDA    $03F0, X
+JSR    $9712
+INC    $B0
+LDA    $B0
+CMP    #$07
+BNE    $DC
+LDA    $A3
+AND    #$BF
+STA    $A3
+LDA    #$3F
+STA    $2006
+LDA    #$0E
+STA    $2006
+LDX    #$00
+LDA    $56
+CMP    #$04
+BNE    $13
+LDA    $B1
+AND    #$03
+BNE    $0D
+LDX    #$30
+LDA    $B1
+AND    #$07
+BNE    $05
+LDA    #$09
+STA    $06F1
+STX    $2007
+LDY    #$00
+STY    $FD
+STY    $2005
+LDY    #$00
+STY    $FC
+STY    $2005
+RTS
+AND    ($86, X)
+AND    ($C6, X)
+ASL    $22
+LSR    $22
+STX    $22
+DEC    $23
+ASL    $00
+ORA    ($02, X)
+ORA    $06
+PHP
+ORA    #$10
+ORA    ($12), Y
+ORA    $16, X
+CLC
+ORA    $2120, Y
+BIT    $25
+ROL    $27
+PLP
+AND    #$00
+ASL    A
+ASL    $3228, X
+LSR    $50
+ROR    $8278, X
+STY    $A096
+TAX
+LDY    $BE, X
+DEC    $20
+INC    $20
+ASL    $21
+ROL    $21
+LSR    $21
+ROR    $21
+STX    $21
+LDX    $21
+DEC    $21
+INC    $21
+ASL    $22
+ROL    $22
+LSR    $22
+ROR    $22
+STX    $22
+LDX    $22
+DEC    $22
+INC    $22
+ASL    $23
+ROL    $23
+STA    $A8
+AND    #$F0
+LSR    A
+LSR    A
+LSR    A
+LSR    A
+STA    $2007
+LDA    $A8
+AND    #$0F
+STA    $2007
+RTS
+LDX    $49
+CPX    #$15
+BPL    $53
+LDA    $96D6, X
+TAY
+TXA
+ASL    A
+TAX
+INX
+LDA    $96EA, X
+STA    $2006
+DEX
+LDA    $BE
+CMP    #$01
+BEQ    $1E
+LDA    $B9
+CMP    #$05
+BEQ    $0C
+LDA    $96EA, X
+SEC
+SBC    #$02
+STA    $2006
+JMP    $9767
+LDA    $96EA, X
+CLC
+ADC    #$0C
+STA    $2006
+JMP    $9767
+LDA    $96EA, X
+CLC
+ADC    #$06
+STA    $2006
+LDX    #$0A
+LDA    ($B8), Y
+STA    $2007
+INY
+DEX
+BNE    $F7
+INC    $49
+LDA    $49
+CMP    #$14
+BMI    $04
+LDA    #$20
+STA    $49
+RTS
+LDA    $B1
+AND    #$03
+BNE    $78
+LDA    #$00
+STA    $AA
+LDX    $AA
+LDA    $4A, X
+BEQ    $5C
+ASL    A
+TAY
+LDA    $96EA, Y
+STA    $A8
+LDA    $BE
+CMP    #$01
+BNE    $0A
+LDA    $A8
+CLC
+ADC    #$06
+STA    $A8
+JMP    $97BD
+LDA    $B9
+CMP    #$04
+BNE    $0A
+LDA    $A8
+SEC
+SBC    #$02
+STA    $A8
+JMP    $97BD
+LDA    $A8
+CLC
+ADC    #$0C
+STA    $A8
+INY
+LDA    $96EA, Y
+STA    $A9
+STA    $2006
+LDX    $52
+LDA    $97FE, X
+CLC
+ADC    $A8
+STA    $2006
+LDA    #$FF
+STA    $2007
+LDA    $A9
+STA    $2006
+LDX    $52
+LDA    $9803, X
+CLC
+ADC    $A8
+STA    $2006
+LDA    #$FF
+STA    $2007
+INC    $AA
+LDA    $AA
+CMP    #$04
+BNE    $96
+INC    $52
+LDA    $52
+CMP    #$05
+BMI    $02
+INC    $48
+RTS
+ORA    ($00, X)
+ORA    $06
+PHP
+ORA    #$A5
+CMP    #$0A
+BMI    $06
+SEC
+SBC    #$0A
+JMP    $980A
+ASL    A
+ASL    A
+TAX
+LDA    #$00
+STA    $A8
+LDA    #$3F
+STA    $2006
+LDA    #$08
+CLC
+ADC    $A8
+STA    $2006
+LDA    $984C, X
+STA    $2007
+LDA    $984D, X
+STA    $2007
+LDA    $984E, X
+STA    $2007
+LDA    $984F, X
+STA    $2007
+LDA    $A8
+CLC
+ADC    #$10
+STA    $A8
+CMP    #$20
+BNE    $D0
+RTS
+BMI    $21
+BMI    $29
+BMI    $24
+BMI    $2A
+BMI    $2B
+ORA    $0F, X
+BMI    $22
+BMI    $00
+ASL    $0F, X
+BMI    $05
+BMI    $16
+BMI    $27
+ASL    $60, X
+INC    $69
+LDA    $69
+CMP    #$14
+BMI    $04
+LDA    #$20
+STA    $69
+INC    $89
+LDA    $89
+CMP    #$14
+BMI    $04
+LDA    #$20
+STA    $89
+RTS
+LDA    $49
+CMP    #$20
+BMI    $56
+LDA    $BE
+CMP    #$01
+BEQ    $20
+LDA    $A4
+CMP    #$00
+BNE    $0E
+INC    $A4
+LDA    $B7
+STA    $A5
+JSR    $98EB
+STA    $A6
+JMP    $98EA
+LDA    $A5
+CMP    $B7
+BNE    $36
+LDA    $A4
+CMP    #$1C
+BNE    $30
+LDA    #$00
+STA    $A4
+STA    $45
+STA    $41
+LDA    #$01
+STA    $48
+LDA    #$05
+STA    $40
+LDX    $BF
+LDA    $9956, X
+STA    $42
+JSR    $9969
+LDA    $BE
+CMP    #$01
+BEQ    $07
+LDA    $A6
+STA    $BF
+JMP    $98E6
+JSR    $98EB
+STA    $BF
+LDA    #$00
+STA    $4E
+RTS
+LDA    $C0
+CMP    #$05
+BNE    $12
+LDX    $D3
+INC    $D3
+LDA    $DF00, X
+LSR    A
+LSR    A
+LSR    A
+LSR    A
+AND    #$07
+TAX
+LDA    $994E, X
+RTS
+JSR    $9907
+RTS
+INC    $1A
+LDA    $17
+CLC
+ADC    $1A
+AND    #$07
+CMP    #$07
+BEQ    $08
+TAX
+LDA    $994E, X
+CMP    $19
+BNE    $1C
+LDX    #$17
+LDY    #$02
+JSR    $AB47
+LDA    $17
+AND    #$07
+CLC
+ADC    $19
+CMP    #$07
+BCC    $06
+SEC
+SBC    #$07
+JMP    $992A
+TAX
+LDA    $994E, X
+STA    $19
+RTS
+BRK
+BRK
+BRK
+BRK
+ORA    ($01, X)
+ORA    ($01, X)
+ORA    $05
+ORA    $05
+ASL    $06
+PHP
+ASL    A
+ASL    $0212
+PHP
+PHP
+ASL    A
+ASL    $0E0E
+ASL    $1212
+TAX
+LDA    $993B, X
+ASL    A
+TAX
+LDA    $03F0, X
+CLC
+ADC    #$01
+STA    $A8
+AND    #$0F
+CMP    #$0A
+BMI    $19
+LDA    $A8
+CLC
+ADC    #$06
+STA    $A8
+CMP    #$A0
+BCC    $0E
+CLC
+ADC    #$60
+STA    $A8
+LDA    $03F1, X
+CLC
+ADC    #$01
+STA    $03F1, X
+LDA    $A8
+STA    $03F0, X
+LDA    $A3
+ORA    #$40
+STA    $A3
+RTS
+JSR    $948B
+BEQ    $11
+LDA    #$02
+STA    $06F0
+LDA    #$0A
+STA    $48
+LDA    #$F0
+STA    $58
+JSR    $E003
+RTS
+LDA    $49
+CMP    #$20
+BMI    $52
+LDA    $41
+ASL    A
+STA    $A8
+ASL    A
+ASL    A
+CLC
+ADC    $A8
+ADC    $40
+STA    $A8
+LDA    $42
+ASL    A
+ASL    A
+STA    $A9
+ASL    A
+CLC
+ADC    $A9
+TAX
+LDY    #$00
+LDA    #$04
+STA    $AA
+LDA    $8A9C, X
+ASL    A
+STA    $AB
+ASL    A
+ASL    A
+CLC
+ADC    $AB
+CLC
+ADC    $A8
+STA    $AD
+INX
+LDA    $8A9C, X
+STA    $AC
+INX
+LDA    $8A9C, X
+CLC
+ADC    $AD
+TAY
+LDA    $AC
+STA    ($B8), Y
+INX
+DEC    $AA
+BNE    $D9
+LDA    #$00
+STA    $57
+JSR    $9CAF
+JSR    $9D17
+INC    $48
+RTS
+LDA    $58
+CMP    #$14
+BEQ    $30
+LDA    $B1
+AND    #$03
+BNE    $29
+LDX    $58
+BMI    $1D
+LDA    $96D6, X
+TAY
+LDA    #$00
+STA    $AA
+LDA    #$13
+STA    $42
+LDA    #$4F
+STA    ($B8), Y
+INY
+INC    $AA
+LDA    $AA
+CMP    #$0A
+BNE    $F3
+LDA    $58
+STA    $49
+INC    $58
+LDA    $58
+CMP    #$14
+BNE    $00
+RTS
+LDA    $BE
+CMP    #$02
+BEQ    $17
+LDA    $75
+CMP    #$03
+BCC    $0B
+LDA    #$80
+JSR    $A459
+JSR    $9E3A
+JMP    $9A64
+LDA    $F5
+CMP    #$10
+BNE    $06
+LDA    #$00
+STA    $48
+STA    $F5
+RTS
+LDA    $49
+CMP    #$20
+BPL    $03
+JMP    $9B02
+LDA    $41
+SEC
+SBC    #$02
+BPL    $02
+LDA    #$00
+CLC
+ADC    $57
+STA    $A9
+ASL    A
+STA    $A8
+ASL    A
+ASL    A
+CLC
+ADC    $A8
+STA    $A8
+TAY
+LDX    #$0A
+LDA    ($B8), Y
+CMP    #$EF
+BEQ    $37
+INY
+DEX
+BNE    $F6
+LDA    #$0A
+STA    $06F1
+INC    $56
+LDX    $57
+LDA    $A9
+STA    $4A, X
+LDY    $A8
+DEY
+LDA    ($B8), Y
+LDX    #$0A
+STX    $B8
+STA    ($B8), Y
+LDA    #$00
+STA    $B8
+DEY
+CPY    #$FF
+BNE    $EF
+LDA    #$EF
+LDY    #$00
+STA    ($B8), Y
+INY
+CPY    #$0A
+BNE    $F9
+LDA    #$13
+STA    $42
+JMP    $9AD2
+LDX    $57
+LDA    #$00
+STA    $4A, X
+INC    $57
+LDA    $57
+CMP    #$04
+BMI    $28
+LDY    $56
+LDA    $9B53, Y
+CLC
+ADC    $BC
+STA    $BC
+LDA    #$00
+STA    $49
+STA    $52
+LDA    $56
+CMP    #$04
+BNE    $05
+LDA    #$04
+STA    $06F1
+INC    $48
+LDA    $56
+BNE    $07
+INC    $48
+LDA    #$07
+STA    $06F1
+RTS
+LDA    $BE
+CMP    #$01
+BEQ    $47
+LDY    $BB
+BEQ    $43
+LDA    $49
+CMP    #$20
+BMI    $3F
+LDA    $96D6, Y
+STA    $A9
+LDA    #$00
+STA    $A8
+LDY    $A9
+LDA    ($B8), Y
+LDY    $A8
+STA    ($B8), Y
+INC    $A8
+INC    $A9
+LDA    $A9
+CMP    #$C8
+BNE    $EE
+INY
+LDX    #$00
+CPX    $5A
+BEQ    $05
+LDA    #$78
+JMP    $9B3C
+LDA    #$FF
+STA    ($B8), Y
+INX
+CPX    #$0A
+BNE    $02
+LDX    #$00
+INY
+CPY    #$C8
+BNE    $E7
+LDA    #$00
+STA    $BB
+STA    $49
+INC    $48
+RTS
+BRK
+BRK
+ORA    ($02, X)
+JSR    $9D17
+LDA    $56
+BNE    $03
+JMP    $9BFE
+TAX
+DEX
+LDA    $D8, X
+CLC
+ADC    #$01
+STA    $D8, X
+AND    #$0F
+CMP    #$0A
+BMI    $07
+LDA    $D8, X
+CLC
+ADC    #$06
+STA    $D8, X
+LDA    $A3
+ORA    #$01
+STA    $A3
+LDA    $C1
+BEQ    $24
+LDA    $56
+STA    $A8
+LDA    $50
+SEC
+SPC    $A8
+STA    $50
+BPL    $07
+LDA    #$00
+STA    $50
+JMP    $9BFE
+AND    #$0F
+CMP    #$0A
+BMI    $62
+LDA    $50
+SEC
+SBC    #$06
+STA    $50
+JMP    $9BFE
+LDX    $56
+INC    $50
+LDA    $50
+AND    #$0F
+CMP    #$0A
+BMI    $15
+LDA    $50
+CLC
+ADC    #$06
+STA    $50
+AND    #$F0
+CMP    #$A0
+BCC    $08
+LDA    $50
+AND    #$0F
+STA    $50
+INC    $51
+LDA    $50
+AND    #$0F
+BNE    $2E
+JMP    $9BD0
+LDA    $51
+STA    $A9
+LDA    $50
+STA    $A8
+LSR    $A9
+ROR    $A8
+LSR    $A9
+ROR    $A8
+LSR    $A9
+ROR    $A8
+LSR    $A9
+ROR    $A8
+LDA    $44
+CMP    $A8
+BPL    $0D
+ORA    $44E6
+LDA    #$06
+STA    $06F1
+LDA    $A3
+ORA    #$02
+STA    $A3
+DEX
+BNE    $AA
+LDA    $4F
+CMP    #$02
+BMI    $29
+CLC
+DEC    $53
+ADC    $53
+STA    $53
+AND    #$0F
+CMP    #$0A
+BCC    $07
+LDA    $53
+CLC
+ADC    #$06
+STA    $53
+LDA    $53
+AND    #$F0
+CMP    #$A0
+BCC    $07
+CLC
+ADC    #$60
+STA    $53
+INC    $54
+LDA    $A3
+ORA    #$04
+STA    $A3
+LDA    #$00
+STA    $4F
+LDA    $44
+STA    $A8
+INC    $A8
+LDA    $56
+ASL    A
+TAX
+LDA    $9CA5, X
+CLC
+ADC    $53
+STA    $53
+CMP    #$A0
+BCC    $07
+CLC
+ADC    #$60
+STA    $53
+INC    $54
+INX
+LDA    $9CA5, X
+CLC
+ADC    $54
+STA    $54
+AND    #$0F
+CMP    #$0A
+BCC    $07
+LDA    $54
+CLC
+ADC    #$06
+STA    $54
+LDA    $54
+AND    #$F0
+CMP    #$A0
+BCC    $09
+LDA    $54
+CLC
+ADC    #$60
+STA    $54
+INC    $55
+LDA    $55
+AND    #$0F
+CMP    #$0A
+BCC    $07
+LDA    $55
+CLC
+ADC    #$06
+STA    $55
+LDA    $55
+AND    #$F0
+CMP    #$A0
+BCC    $08
+LDA    #$99
+STA    $53
+STA    $54
+STA    $55
+DEC    $A8
+BNE    $9F
+LDA    $A3
+ORA    #$04
+STA    $A3
+LDA    #$00
+STA    $56
+INC    $48
+RTS
+BRK
+BRK
+RTI
+BRK
+BRK
+ORA    ($00, X)
+BRK
+LDX    $41
+DEX
+DEX
+TXA
+BPL    $02
+LDA    #$00
+CMP    $49
+BPL    $02
+STA    $49
+RTS
+LDA    #$05
+STA    $A9
+LDA    $68
+CMP    #$00
+BEQ    $10
+LDA    $BE
+CMP    #$01
+BEQ    $45
+LDA    #$04
+STA    $A9
+LDA    $88
+CMP    #$00
+BNE    $3B
+LDA    $BE
+CMP    #$01
+BEQ    $05
+LDA    #$09
+STA    $A7
+RTS
+LDA    #$03
+STA    $BD
+LDA    $BE
+CMP    #$01
+BNE    $03
+JSR    $A0EE
+LDA    #$01
+STA    $68
+STA    $88
+LDA    #$EF
+LDX    #$04
+LDY    #$05
+JSR    $AC6A
+LDA    #$00
+STA    $69
+STA    $89
+LDA    #$01
+STA    $68
+STA    $88
+JSR    $AA2F
+LDA    #$03
+STA    $C0
+RTS
+INC    $A7
+RTS
+LDX    #$05
+LDA    $96D6, X
+TAY
+LDX    #$0A
+LDA    ($B8), Y
+CMP    #$EF
+BNE    $17
+INY
+DEX
+BNE    $F6
+LDA    $BA
+BEQ    $23
+LDA    #$00
+STA    $BA
+LDX    $C2
+LDA    $85D2, X
+JSR    $9E07
+JMP    $9D50
+LDA    $BA
+BNE    $10
+LDA    #$FF
+STA    $BA
+LDA    $C2
+CLC
+ADC    #$04
+TAX
+LDA    $85D2, X
+JSR    $9E07
+RTS
+LDA    $C0
+CMP    #$05
+BEQ    $04
+JSR    $AB9D
+RTS
+LDA    $D0
+CMP    #$FF
+BEQ    $4F
+JSR    $AB9D
+LDA    $F5
+CMP    #$10
+BEQ    $39
+LDA    $CF
+BEQ    $05
+DEC    $CF
+JMP    $9D9A
+LDX    #$00
+LDA    ($D1, X)
+STA    $A8
+JSR    $9DE8
+LDA    $CE
+EOR    $A8
+AND    $A8
+STA    $F5
+LDA    $A8
+STA    $CE
+LDX    #$00
+LDA    ($D1, X)
+STA    $CF
+JSR    $9DE8
+LDA    $D2
+CMP    #$DF
+BEQ    $0B
+JMP    $9D9E
+LDA    #$00
+STA    $F5
+LDA    $CE
+STA    $F7
+RTS
+LDA    #$DD
+STA    $D2
+LDA    #$00
+STA    $B2
+LDA    #$01
+STA    $C0
+RTS
+JSR    $AB9D
+LDA    $C0
+CMP    #$05
+BNE    $2E
+LDA    $D0
+CMP    #$FF
+BNE    $28
+LDA    $F7
+CMP    $CE
+BEQ    $1F
+LDX    #$00
+LDA    $CE
+STA    ($D1, X)
+JSR    $9DE8
+LDA    $CF
+STA    ($D1, X)
+JSR    $9DE8
+LDA    $D2
+CMP    #$DF
+BEQ    $0C
+LDA    $F7
+STA    $CE
+LDA    #$00
+STA    $CF
+RTS
+INC    $CF
+RTS
+RTS
+LDA    $D1
+CLC
+ADC    #$01
+STA    $D1
+LDA    #$00
+ADC    $D2
+STA    $D2
+RTS
+LDA    #$00
+STA    $C1
+STA    $67
+STA    $A7
+STA    $68
+LDA    #$05
+STA    $C0
+JMP    $815D
+STA    $06F5
+LDA    $C0
+CMP    #$05
+BNE    $05
+LDA    #$FF
+STA    $06F5
+RTS
+LDA    $F7
+CMP    #$F0
+BEQ    $03
+INC    $A7
+RTS
+JSR    $E003
+LDA    #$00
+STA    $C0
+RTS
+LDA    #$02
+STA    $A7
+JSR    $9874
+RTS
+LDA    #$13
+STA    $42
+RTS
+INC    $A7
+RTS
+INC    $48
+RTS
+LDA    #$02
+STA    $A2
+LDA    #$04
+STA    $BD
+LDA    $C1
+BNE    $03
+JMP    $A926
+LDX    $64
+LDA    $96B8, X
+AND    #$0F
+STA    $44
+LDA    #$00
+STA    $DE
+STA    $DD
+STA    $DC
+LDA    $44
+ASL    A
+ASL    A
+ASL    A
+ASL    A
+STA    $AB
+LDA    $79
+ASL    A
+ASL    A
+ASL    A
+ASL    A
+STA    $AC
+JSR    $AA52
+JSR    $AA78
+LDA    $44
+CMP    #$09
+BNE    $12
+LDA    #$01
+JSR    $ACB7
+LDA    #$01
+JSR    $ACCB
+JSR    $AA98
+LDX    $C9
+JMP    $9EA4
+LDX    #$03
+LDA    $44
+CMP    #$02
+BEQ    $06
+CMP    #$06
+BEQ    $02
+LDX    #$02
+TXA
+JSR    $ACB7
+LDA    #$02
+JSR    $ACCB
+JSR    $AA98
+DEC    $9820
+TAX
+LDA    $6320
+LDY    $20
+TAX
+JSR    $AA2F
+JSR    $AA5F
+JSR    $AA2F
+LDA    #$04
+STA    $BD
+LDA    #$0A
+JSR    $9E07
+LDA    #$80
+JSR    $A7FD
+LDA    $73
+STA    $DC
+LDA    $74
+STA    $DD
+LDA    $75
+STA    $DE
+LDA    #$02
+STA    $06F1
+LDA    #$00
+STA    $73
+STA    $74
+STA    $75
+LDA    #$40
+JSR    $A7FD
+LDA    $AB
+BEQ    $2A
+DEC    $AB
+LDA    $AB
+AND    #$0F
+CMP    #$0F
+BNE    $08
+LDA    $AB
+AND    #$F0
+ORA    #$09
+STA    $AB
+LDA    $AB
+JSR    $9F62
+LDA    #$01
+STA    $06F1
+LDA    #$02
+JSR    $A7FD
+LDA    $AB
+BNE    $DB
+LDA    #$40
+JSR    $A7FD
+LDA    $AC
+BEQ    $2F
+DEC    $AC
+LDA    $AC
+AND    #$0F
+CMP    #$0F
+BNE    $08
+LDA    $AC
+AND    #$F0
+ORA    #$09
+STA    $AC
+LDA    $AC
+JSR    $9F62
+LDA    #$01
+STA    $06F1
+LDA    #$02
+JSR    $A7FD
+LDA    $AC
+BNE    $DB
+LDA    #$02
+STA    $06F1
+LDA    #$40
+JSR    $A7FD
+JSR    $A527
+JSR    $AA2F
+LDA    $F5
+CMP    #$10
+BNE    $F4
+LDA    $64
+STA    $44
+LDA    $DC
+STA    $53
+LDA    $DD
+STA    $54
+LDA    $DE
+STA    $55
+RTS
+LDA    #$01
+CLC
+ADC    $DD
+STA    $DD
+AND    #$0F
+CMP    #$0A
+BCC    $07
+LDA    $DD
+CLC
+ADC    #$06
+STA    $DD
+AND    #$F0
+CMP    #$A0
+BCC    $09
+LDA    $DD
+CLC
+ADC    #$60
+STA    $DD
+INC    $DE
+LDA    $DE
+AND    #$0F
+CMP    #$0A
+BCC    $07
+LDA    $DE
+CLC
+ADC    #$06
+STA    $DE
+RTS
+LDA    #$20
+STA    $2006
+LDA    #$8E
+STA    $2006
+LDA    $75
+JSR    $9712
+LDA    $74
+JSR    $9712
+LDA    $73
+JSR    $9712
+LDA    $C1
+BEQ    $37
+LDA    #$20
+STA    $2006
+LDA    #$B0
+STA    $2006
+LDA    $AB
+JSR    $9712
+LDA    #$20
+STA    $2006
+LDA    #$D0
+STA    $2006
+LDA    $AC
+JSR    $9712
+LDA    #$21
+STA    $2006
+LDA    #$2E
+STA    $2006
+LDA    $DE
+JSR    $9712
+LDA    $DD
+JSR    $9712
+LDA    $DC
+JSR    $9712
+LDY    #$00
+STY    $2005
+STY    $2005
+RTS
+LDA    $BE
+CMP    #$01
+BEQ    $03
+JMP    $A085
+JSR    $AA98
+INC    $A9C7, X
+BRK
+STA    $A9
+LDA    $C1
+BEQ    $04
+LDA    #$04
+STA    $A9
+LDA    $A9
+AND    #$03
+ASL    A
+TAX
+LDA    $A086, X
+STA    $2006
+LDA    $A9
+AND    #$03
+ASL    A
+TAX
+INX
+LDA    $A086, X
+STA    $2006
+LDA    $A9
+ASL    A
+STA    $A8
+ASL    A
+CLC
+ADC    $A8
+TAY
+LDX    #$06
+LDA    $0700, Y
+STY    $A8
+TAY
+LDA    $A08C, Y
+LDY    $A8
+STA    $2007
+INY
+DEX
+BNE    $EE
+LDA    #$FF
+STA    $2007
+LDA    $A9
+STA    $A8
+ASL    A
+CLC
+ADC    $A8
+TAY
+LDA    $0730, Y
+JSR    $9712
+INY
+LDA    $0730, Y
+JSR    $9712
+INY
+LDA    $0730, Y
+JSR    $9712
+LDA    #$FF
+STA    $2007
+LDY    $A9
+LDA    $0748, Y
+TAX
+LDA    $A0BC, X
+JSR    $9712
+INC    $A9
+LDA    $A9
+CMP    #$03
+BEQ    $07
+CMP    #$07
+BEQ    $03
+JMP    $A00C
+RTS
+CMP    #$23
+ORA    #$24
+ASL    A
+ORA    $0F0E
+BPL    $11
+ORA    ($12), Y
+ORA    $16, X
+CLC
+ORA    $1B1A, Y
+ORA    $1F1E, X
+JSR    $2221
+BRK
+ORA    ($02, X)
+ORA    $06
+PHP
+ORA    #$25
+LSR    $6E5F, X
+BRK
+BRK
+BRK
+BRK
+BRK
+ORA    ($02, X)
+ORA    $06
+PHP
+ORA    #$10
+ORA    ($12), Y
+ORA    $16, X
+CLC
+ORA    $2120, Y
+BIT    $25
+ROL    $27
+PLP
+AND    #$30
+AND    ($32), Y
+AND    $36, X
+SEC
+AND    $4140, Y
+EOR    $46
+PHA
+EOR    #$A9
+BRK
+STA    $D5
+LDA    $C1
+BEQ    $04
+LDA    #$04
+STA    $D5
+LDA    $D5
+STA    $A9
+ASL    A
+CLC
+ADC    $A9
+TAY
+LDA    $0730, Y
+CMP    $75
+BEQ    $04
+BCS    $18
+BCC    $26
+INY
+LDA    $0730, Y
+CMP    $74
+BEQ    $04
+BCS    $0C
+BCC    $1A
+INY
+LDA    $0730, Y
+CMP    $73
+BEQ    $12
+BCC    $10
+INC    $D5
+LDA    $D5
+CMP    #$03
+BEQ    $07
+CMP    #$07
+BEQ    $03
+JMP    $A0FA
+RTS
+LDA    $D5
+AND    #$03
+CMP    #$02
+BPL    $24
+BIT    $A9
+ASL    $20
+LDA    ($A9, X)
+JSR    $A1C1
+LDA    #$01
+JSR    $A1E0
+LDA    $D5
+AND    #$03
+BNE    $0F
+LDA    #$00
+JSR    $A192
+LDA    #$00
+JSR    $A1C1
+LDA    #$00
+JSR    $A1E0
+LDX    $D5
+LDA    $A1F1, X
+TAX
+LDY    #$06
+LDA    #$00
+STA    $0700, X
+INX
+DEY
+BNE    $F9
+LDX    $D5
+LDA    $A1F9, X
+TAX
+LDA    $75
+STA    $0730, X
+INX
+LDA    $74
+STA    $0730, X
+INX
+LDA    $73
+STA    $0730, X
+LDX    $D5
+LDA    $64
+STA    $0748, X
+JMP    $A201
+STA    $A8
+LDA    $C1
+BEQ    $07
+LDA    #$18
+CLC
+ADC    $A8
+STA    $A8
+LDA    #$05
+STA    $A9
+LDA    $A8
+CLC
+ADC    $A9
+TAX
+LDA    $0700, X
+STA    $AA
+TXA
+CLC
+ADC    #$06
+TAX
+LDA    $AA
+STA    $0700, X
+DEC    $A9
+LDA    $A9
+CMP    #$FF
+BNE    $E3
+RTS
+TAX
+LDA    $C1
+BEQ    $05
+TXA
+CLC
+ADC    #$0C
+TAX
+LDA    $0730, X
+STA    $0733, X
+INX
+LDA    $0730, X
+STA    $0733, X
+INX
+LDA    $0730, X
+STA    $0733, X
+RTS
+TAX
+LDA    $C1
+BEQ    $05
+TXA
+CLC
+ADC    #$04
+TAX
+LDA    $0748, X
+STA    $0749, X
+RTS
+BRK
+ASL    $0C
+CLC
+ASL    $2A24, X
+BRK
+ASL    $09
+ORA    $EE, X
+BRK
+LDA    #$10
+JSR    $ACA3
+LDA    #$09
+JSR    $9E07
+LDA    #$02
+STA    $BD
+JSR    $AA52
+JSR    $AA78
+LDA    #$00
+JSR    $ACB7
+LDA    #$00
+JSR    $ACCB
+JSR    $AA98
+LDA    $9820
+TAX
+STA    $A9C3, X
+JSR    $068D
+JSR    $6DA9
+STA    $2006
+LDA    #$0A
+CLC
+ADC    $C1
+STA    $2007
+JSR    $9FF2
+LDA    #$02
+STA    $BD
+JSR    $AA6B
+JSR    $AA2F
+JSR    $AA5F
+JSR    $AA2F
+LDA    $D5
+ASL    A
+STA    $A8
+ASL    A
+CLC
+ADC    $A8
+STA    $D6
+LDA    #$00
+STA    $D4
+STA    $0200
+LDA    $D5
+AND    #$03
+TAX
+LDA    $A33B, X
+STA    $A1
+LDA    #$00
+STA    $0200
+LDX    $D4
+LDA    $A33E, X
+STA    $A0
+LDA    #$0E
+STA    $A2
+LDA    $B1
+AND    #$03
+BNE    $04
+LDA    #$02
+STA    $A2
+JSR    $8C27
+LDA    $F5
+AND    #$10
+BEQ    $08
+LDA    #$02
+STA    $06F1
+JMP    $A337
+LDA    $F5
+AND    #$81
+BEQ    $11
+LDA    #$01
+STA    $06F1
+INC    $D4
+LDA    $D4
+CMP    #$06
+BMI    $04
+LDA    #$00
+STA    $D4
+LDA    $F5
+AND    #$42
+BEQ    $0F
+LDA    #$01
+STA    $06F1
+DEC    $D4
+LDA    $D4
+BPL    $04
+LDA    #$05
+STA    $D4
+LDA    $F7
+AND    #$04
+BEQ    $28
+LDA    $B1
+AND    #$07
+BNE    $22
+LDA    #$01
+STA    $06F1
+LDA    $D6
+STA    $A8
+CLC
+ADC    $D4
+TAX
+LDA    $0700, X
+STA    $A8
+DEC    $A8
+LDA    $A8
+BPL    $05
+ORA    $18
+ADC    #$2C
+STA    $A8
+LDA    $A8
+STA    $0700, X
+LDA    $F7
+AND    #$08
+BEQ    $2A
+LDA    $B1
+AND    #$07
+BNE    $24
+LDA    #$01
+STA    $06F1
+LDA    $D6
+STA    $A8
+CLC
+ADC    $D4
+TAX
+LDA    $0700, X
+STA    $A8
+INC    $A8
+LDA    $A8
+CMP    #$2C
+BMI    $05
+SEC
+SBC    #$2C
+STA    $A8
+LDA    $A8
+STA    $0700, X
+LDA    $D6
+CLC
+ADC    $D4
+TAX
+LDA    $0700, X
+STA    $D7
+LDA    #$80
+STA    $A3
+JSR    $AA2F
+JMP    $A26D
+JSR    $AA2F
+RTS
+PHA
+BVC    $58
+RTS
+PLA
+BVS    $A5
+AND    #$80
+BEQ    $34
+LDA    $D5
+AND    #$03
+ASL    A
+TAX
+LDA    $A086, X
+STA    $2006
+LDA    $D5
+AND    #$03
+ASL    A
+TAX
+INX
+LDA    $A086, X
+STA    $A8
+CLC
+ADC    $D4
+STA    $2006
+LDX    $D7
+LDA    $A08C, X
+STA    $2007
+LDA    #$00
+STA    $FD
+STA    $2005
+STA    $FC
+STA    $2005
+STA    $A3
+RTS
+LDA    $C0
+CMP    #$05
+BNE    $0D
+LDA    $F5
+CMP    #$10
+BNE    $07
+LDA    #$01
+STA    $C0
+JMP    $A3EF
+LDA    $BD
+CMP    #$03
+BNE    $57
+LDA    $F5
+AND    #$10
+BNE    $03
+JMP    $A3EF
+LDA    $68
+CMP    #$0A
+BNE    $03
+JMP    $A3EF
+LDA    #$05
+STA    $068D
+LDA    #$00
+STA    $BD
+JSR    $AA45
+LDA    #$16
+STA    $2001
+LDA    #$FF
+LDX    #$02
+LDY    #$02
+JSR    $AC6A
+LDA    #$70
+STA    $A0
+LDA    #$77
+STA    $A1
+LDA    #$05
+STA    $A2
+JSR    $8C27
+LDA    $F5
+CMP    #$10
+BEQ    $06
+JSR    $AA2F
+JMP    $A3C4
+LDA    #$1E
+STA    $2001
+LDA    #$00
+STA    $068D
+STA    $69
+LDA    #$03
+STA    $BD
+INC    $A7
+RTS
+LDA    $C1
+BEQ    $35
+LDA    $50
+BNE    $31
+LDA    #$02
+JSR    $9E07
+LDY    #$46
+LDX    #$00
+LDA    $A42E, X
+CMP    #$80
+BEQ    $07
+STA    ($B8), Y
+INX
+INY
+JMP    $A403
+LDA    #$00
+STA    $69
+JSR    $A44D
+LDA    #$00
+STA    $BD
+LDA    #$80
+JSR    $A459
+JSR    $9E3A
+LDA    #$00
+STA    $48
+INC    $A7
+RTS
+INC    $48
+RTS
+SEC
+AND    $3939, Y
+AND    $3939, Y
+AND    $3A39, Y
+ASL    $0C0C, X
+ASL    $1C1C
+PLP
+AND    $3E3E, X
+ROL    $3E3E, X
+ROL    $3E3E, X
+LDA    #$14
+STA    $C3
+JSR    $AA2F
+LDA    $C3
+BNE    $F9
+RTS
+STA    $C3
+JSR    $AA2F
+LDA    $C3
+BNE    $F9
+RTS
+LDA    #$00
+STA    $C4
+STA    $C5
+STA    $CD
+LDA    #$02
+STA    $A2
+LDA    $44
+CMP    #$09
+BNE    $25
+LDA    $79
+CLC
+ADC    #$01
+STA    $C4
+JSR    $A4B1
+LDA    #$00
+STA    $C4
+STA    $C7
+LDA    $A73D
+STA    $C8
+LDA    $A73E
+STA    $C9
+LDA    $A73F
+STA    $CA
+LDA    $A740
+STA    $CB
+RTS
+LDX    $44
+LDA    $A767, X
+STA    $C7
+STA    $C8
+STA    $C9
+STA    $CA
+STA    $CB
+LDX    $44
+LDA    $A75D, X
+STA    $C6
+RTS
+LDA    $C4
+JSR    $AC82
+CPY    $A4
+LDY    $DA
+LDY    $E5
+LDY    $F0
+LDY    $FB
+LDY    $06
+LDA    $A9
+TAY
+STA    $15
+LDA    #$22
+STA    $14
+JSR    $A507
+LDA    #$A8
+STA    $15
+LDA    #$34
+STA    $14
+JSR    $A507
+LDA    #$A8
+STA    $15
+LDA    #$4A
+STA    $14
+JSR    $A507
+LDA    #$A8
+STA    $15
+LDA    #$62
+STA    $14
+JSR    $A507
+LDA    #$A8
+STA    $15
+LDA    #$7A
+STA    $14
+JSR    $A507
+LDA    #$A8
+STA    $15
+LDA    #$96
+STA    $14
+JSR    $A507
+RTS
+LDY    #$00
+LDA    ($14), Y
+STA    $2006
+INY
+LDA    ($14), Y
+STA    $2006
+INY
+LDA    ($14), Y
+INY
+CMP    #$FE
+BEQ    $ED
+CMP    #$FD
+BEQ    $06
+STA    $2007
+JMP    $A515
+RTS
+LDA    $C1
+BNE    $03
+JMP    $A9B1
+LDA    $44
+CMP    #$09
+BEQ    $03
+JMP    $A625
+JSR    $A53B
+RTS
+LDA    $79
+JSR    $AC82
+ORA    #$A6
+SBC    ($A5), Y
+CMP    $C1A5, Y
+LDA    $A9
+LDA    $4C
+LDA    $A9
+INY
+STA    $A0
+LDA    #$47
+STA    $A1
+LDA    $B1
+AND    #$08
+LSR    A
+LSR    A
+LSR    A
+CLC
+ADC    #$21
+STA    $A2
+JSR    $8C27
+LDA    #$A0
+STA    $A0
+LDA    #$27
+STA    $A2
+LDA    $B1
+AND    #$18
+LSR    A
+LSR    A
+LSR    A
+TAX
+LDA    $A80A, X
+STA    $A1
+CMP    #$97
+BEQ    $04
+LDA    #$28
+STA    $A2
+JSR    $8C27
+LDA    #$C0
+STA    $A0
+LDA    $C4
+LSR    A
+LSR    A
+LSR    A
+CMP    #$0A
+BNE    $09
+LDA    #$00
+STA    $C4
+INC    $C5
+JMP    $A583
+TAX
+LDA    $A80E, X
+STA    $A1
+LDA    $A818, X
+STA    $A2
+JSR    $8C27
+INC    $C4
+LDA    #$30
+STA    $A0
+LDA    #$A7
+STA    $A1
+LDA    $B1
+AND    #$10
+LSR    A
+LSR    A
+LSR    A
+LSR    A
+CLC
+ADC    #$1F
+STA    $A2
+JSR    $8C27
+LDA    #$40
+STA    $A0
+LDA    #$77
+STA    $A1
+LDA    $B1
+AND    #$10
+LSR    A
+LSR    A
+LSR    A
+LSR    A
+CLC
+ADC    #$1D
+STA    $A2
+JSR    $8C27
+LDA    #$A8
+STA    $A0
+LDA    #$D7
+STA    $A1
+LDA    $B1
+AND    #$10
+LSR    A
+LSR    A
+LSR    A
+LSR    A
+CLC
+ADC    #$1A
+STA    $A2
+JSR    $8C27
+LDA    #$C8
+STA    $A0
+LDA    #$D7
+STA    $A1
+LDA    $B1
+AND    #$10
+LSR    A
+LSR    A
+LSR    A
+LSR    A
+CLC
+ADC    #$18
+STA    $A2
+JSR    $8C27
+LDA    #$28
+STA    $A0
+LDA    #$77
+STA    $A1
+LDA    $B1
+AND    #$10
+LSR    A
+LSR    A
+LSR    A
+LSR    A
+CLC
+ADC    #$16
+STA    $A2
+JSR    $8C27
+JSR    $A6BC
+RTS
+JSR    $A690
+INC    $CD
+LDA    #$00
+STA    $CC
+LDX    $44
+LDA    $A767, X
+STA    $A8
+LDX    $CC
+LDA    $C6, X
+CMP    $A8
+BEQ    $38
+STA    $A0
+JSR    $A6AE
+LDA    $A7B7, X
+STA    $A1
+JSR    $8C27
+LDX    $44
+LDA    $A753, X
+CMP    $CD
+BNE    $22
+LDX    $44
+LDA    $A771, X
+CLC
+ADC    $A0
+STA    $A0
+LDX    $CC
+STA    $C6, X
+JSR    $A6AE
+LDA    $A77B, X
+CMP    $A0
+BNE    $0A
+LDX    $44
+LDA    $A75D, X
+LDX    $CC
+INX
+STA    $C6, X
+LDA    $CC
+STA    $A8
+CMP    $59
+BEQ    $05
+INC    $CC
+JMP    $A62E
+LDX    $44
+LDA    $A753, X
+CMP    $CD
+BNE    $04
+LDA    #$00
+STA    $CD
+RTS
+INC    $C4
+LDX    $44
+LDA    $A749, X
+CMP    $C4
+BNE    $0A
+LDA    $C5
+EOR    #$01
+STA    $C5
+LDA    #$00
+STA    $C4
+LDA    $A7F3, X
+CLC
+ADC    $C5
+STA    $A2
+RTS
+LDA    $44
+ASL    A
+STA    $A8
+ASL    A
+CLC
+ADC    $A8
+CLC
+ADC    $CC
+TAX
+RTS
+LDX    #$00
+LDA    $A735, X
+CMP    $C5
+BNE    $0B
+LDA    $C8, X
+BEQ    $07
+SEC
+SBC    #$01
+STA    $C8, X
+INC    $C5
+INX
+CPX    #$04
+BNE    $E9
+LDA    #$00
+STA    $CC
+LDX    $CC
+LDA    $C8, X
+BEQ    $4D
+STA    $A8
+LDA    $A73D, X
+CMP    $A8
+BEQ    $0F
+LDA    #$03
+STA    $06F0
+DEC    $A8
+LDA    $A8
+CMP    #$A0
+BCS    $02
+DEC    $A8
+LDA    $A8
+STA    $C8, X
+STA    $A1
+LDA    $A739, X
+STA    $A0
+LDA    $A741, X
+STA    $A2
+JSR    $8C27
+LDX    $CC
+LDA    $C8, X
+STA    $A8
+LDA    $A73D, X
+CMP    $A8
+BEQ    $15
+LDA    $A745, X
+CLC
+ADC    $A0
+STA    $A0
+LDA    $B1
+AND    #$02
+LSR    A
+CLC
+ADC    #$51
+STA    $A2
+JSR    $8C27
+INC    $CC
+LDA    $CC
+CMP    #$04
+BNE    $A5
+RTS
+ORA    $07
+ORA    #$0B
+RTS
+BCC    $70
+ROR    $B8BC
+LDY    $4DB3, X
+BVC    $4E
+BRK
+BRK
+BRK
+ASL    $03
+BPL    $03
+ORA    $06
+ORA    $03
+ORA    ($01, X)
+ORA    ($02, X)
+ORA    $01
+ORA    ($01, X)
+INC    $02FE, X
+INC    $0202, X
+INC    $0002, X
+BRK
+BRK
+BEQ    $10
+BEQ    $F0
+JSR    $01F0
+ORA    ($FF, X)
+ORA    ($FF, X)
+INC    $3A02, X
+BIT    $0A
+LSR    A
+LSR    A
+LDX    $8E6E
+ROR    $021E, X
+ASL    A
+ASL    A
+INC    $FCDE
+INC    $02, X
+INX
+INX
+INX
+INX
+PHA
+LDX    $909E
+TYA
+TAY
+CPY    #$A8
+BCC    $B0
+BCS    $B8
+LDY    #$B8
+TAY
+LDY    #$C8
+INY
+INY
+INY
+INY
+INY
+BMI    $20
+RTI
+PLP
+LDY    #$80
+TAY
+DEY
+PLA
+TAY
+PHA
+SEI
+CLI
+PLA
+CLC
+PHA
+SEI
+SEC
+INY
+INY
+INY
+INY
+INY
+INY
+BCC    $58
+BVS    $A8
+RTI
+SEC
+PLA
+DEY
+SEI
+CLC
+PHA
+TAY
+INY
+INY
+INY
+INY
+INY
+INY
+BIT    $542E
+ROL    $4B, X
+SEC
+STA    $C3
+JSR    $A527
+JSR    $AA2F
+LDA    $C3
+BNE    $F6
+RTS
+AND    #$29
+AND    #$2A
+ROL    A
+ROL    A
+ROL    A
+ROL    A
+AND    #$29
+AND    ($A5, X)
+INC    $C521, X
+INC    $E521, X
+SBC    $1A23, X
+INC    $3923, X
+INC    $5923, X
+INC    $7923, X
+SBC    $1523, X
+INC    $3523, X
+INC    $5523, X
+INC    $7523, X
+SBC    $8821, X
+INC    $A821, X
+INC    $C821, X
+INC    $E821, X
+SBC    $4622, X
+INC    $6622, X
+INC    $8622, X
+INC    $A622, X
+SBC    $F920, X
+INC    $1921, X
+INC    $3921, X
+SBC    $3523, X
+INC    $5523, X
+INC    $7523, X
+SBC    $3923, X
+INC    $5923, X
+INC    $7923, X
+SBC    $5822, X
+INC    $7522, X
+INC    $9422, X
+INC    $B422, X
+INC    $D422, X
+INC    $F422, X
+INC    $1423, X
+INC    $3423, X
+INC    $CA22, X
+LSR    $47
+INC    $EA22, X
+LSR    $57, X
+SBC    $20FC, X
+TAX
+JSR    $AA78
+LDA    #$02
+JSR    $ACB7
+LDA    #$02
+JSR    $ACCB
+JSR    $AA98
+PLA
+JSR    $AA98
+LDA    $6E20
+LDA    #$20
+TAX
+JSR    $AA2F
+JSR    $AA5F
+JSR    $AA2F
+LDA    #$04
+STA    $BD
+LDA    #$0A
+JSR    $9E07
+LDA    #$80
+JSR    $A7FD
+JSR    $A527
+JSR    $AA2F
+LDA    $C5
+BNE    $F6
+LDA    $F5
+CMP    #$10
+BNE    $F0
+RTS
+LDA    #$00
+STA    $C4
+LDA    $75
+CMP    #$05
+BCC    $2D
+LDA    #$01
+STA    $C4
+LDA    $75
+CMP    #$07
+BCC    $23
+LDA    #$02
+STA    $C4
+LDA    $75
+CMP    #$10
+BCC    $19
+LDA    #$03
+STA    $C4
+LDA    $75
+CMP    #$12
+BCC    $0F
+LDA    #$04
+STA    $C4
+LDA    #$A8
+STA    $15
+LDA    #$CC
+STA    $14
+JSR    $A507
+LDX    $C4
+LDA    $AA2A, X
+STA    $C5
+LDA    #$00
+STA    $C6
+RTS
+LDA    $C5
+CMP    #$00
+BEQ    $59
+STA    $A1
+LDA    #$58
+LDX    $C4
+LDA    $AA25, X
+STA    $A0
+LDA    $AA11, X
+STA    $A2
+JSR    $8C27
+LDA    $C4
+ASL    A
+STA    $A8
+LDA    $B1
+AND    #$02
+LSR    A
+CLC
+ADC    $A8
+TAX
+LDA    $AA16, X
+STA    $A2
+LDX    $C4
+LDA    $AA20, X
+CLC
+ADC    $A0
+STA    $A0
+JSR    $8C27
+LDA    $C6
+CMP    #$F0
+BNE    $1E
+LDA    $C5
+CMP    #$B0
+BCC    $06
+LDA    $B1
+AND    #$01
+BNE    $0F
+LDA    #$03
+STA    $06F0
+DEC    $C5
+LDA    $C5
+CMP    #$80
+BCS    $02
+DEC    $C5
+JMP    $AA10
+INC    $C6
+RTS
+ROL    $4441, X
+LSR    A
+RTI
+EOR    $46
+PHA
+EOR    #$23
+BIT    $00
+BRK
+BRK
+BRK
+BRK
+BVC    $48
+LDY    #$BF
+JSR    $E000
+LDA    #$00
+STA    $33
+NOP
+LDA    $33
+BEQ    $FC
+LDA    #$FF
+LDX    #$02
+LDY    #$02
+JSR    $AC6A
+RTS
+JSR    $E000
+LDA    #$00
+STA    $33
+NOP
+LDA    $33
+BEQ    $FC
+RTS
+JSR    $AA45
+LDA    $FE
+AND    #$E1
+STA    $2001
+STA    $FE
+RTS
+JSR    $AA45
+JSR    $AA8A
+LDA    $FE
+ORA    #$1E
+BNE    $EE
+LDA    $2002
+AND    #$80
+BNE    $F9
+LDA    $FF
+ORA    #$80
+BNE    $04
+LDA    $FF
+AND    #$7F
+STA    $2000
+STA    $FF
+RTS
+LDX    #$FF
+LDY    #$00
+JSR    $AC1C
+RTS
+LDA    #$00
+STA    $2005
+STA    $2005
+LDA    $FF
+STA    $2000
+RTS
+JSR    $AB21
+JMP    $AAF2
+PHA
+STA    $2006
+INY
+LDA    ($00), Y
+STA    $2006
+INY
+LDA    ($00), Y
+ASL    A
+PHA
+LDA    $FF
+ORA    #$04
+BCS    $02
+AND    #$FB
+STA    $2000
+STA    $FF
+PLA
+ASL    A
+PHP
+BCC    $03
+ORA    #$02
+INY
+PLP
+CLC
+BNE    $01
+SEC
+ROR    A
+LSR    A
+TAX
+BCS    $01
+INY
+LDA    ($00), Y
+STA    $2007
+DEX
+BNE    $F5
+PLA
+CMP    #$3F
+BNE    $0C
+STA    $2006
+STX    $2006
+STX    $2006
+STX    $2006
+SEC
+TYA
+ADC    $00
+STA    $00
+LDA    #$00
+ADC    $01
+STA    $01
+LDX    $2002
+LDY    #$00
+LDA    ($00), Y
+BPL    $01
+ORA    ($60, X)
+CMP    #$60
+BNE    $0A
+PLA
+STA    $01
+PLA
+STA    $00
+LDY    #$02
+BNE    $DC
+CMP    #$4C
+BNE    $90
+LDA    $00
+PHA
+LDA    $01
+PHA
+INY
+LDA    ($00), Y
+TAX
+INY
+LDA    ($00), Y
+STA    $01
+STX    $00
+BCS    $D1
+TSX
+LDA    $0103, X
+STA    $05
+LDA    $0104, X
+STA    $06
+LDY    #$01
+LDA    ($05), Y
+STA    $00
+INY
+LDA    ($05), Y
+STA    $01
+CLC
+LDA    #$02
+ADC    $05
+STA    $0103, X
+LDA    #$00
+ADC    $06
+STA    $0104, X
+RTS
+LDA    $00, X
+AND    #$02
+STA    $00
+LDA    $01, X
+AND    #$02
+EOR    $00
+CLC
+BEQ    $01
+SEC
+ROR    $00, X
+INX
+DEY
+BNE    $FA
+RTS
+LDA    #$00
+STA    $2003
+LDA    #$02
+STA    $4014
+RTS
+LDX    $FB
+INX
+STX    $4016
+DEX
+STX    $4016
+LDX    #$08
+LDA    $4016
+LSR    A
+ROL    $F5
+LSR    A
+ROL    $00
+LDA    $4017
+LSR    A
+ROL    $F6
+LSR    A
+ROL    $01
+DEX
+BNE    $EB
+RTS
+LDA    $00
+ORA    $F5
+STA    $F5
+LDA    $01
+ORA    $F6
+STA    $F6
+RTS
+JSR    $AB69
+BEQ    $20
+JSR    $AB69
+JSR    $AB8B
+LDA    $F5
+STA    $A9
+LDA    $F6
+STA    $AA
+JSR    $AB69
+JSR    $AB8B
+LDA    $F5
+AND    $A9
+STA    $F5
+LDA    $F6
+AND    $AA
+STA    $F6
+LDX    #$01
+LDA    $F5, X
+TAY
+EOR    $F7, X
+AND    $F5, X
+STA    $F5, X
+STY    $F7, X
+DEX
+BPL    $F2
+RTS
+JSR    $AB69
+LDY    $F5
+LDA    $F6
+PHA
+JSR    $AB69
+PLA
+CMP    $F6
+BNE    $F3
+CPY    $F5
+BNE    $EF
+BEQ    $D9
+JSR    $AB69
+JSR    $AB8B
+LDY    $F5
+LDA    $F6
+PHA
+JSR    $AB69
+JSR    $AB8B
+PLA
+CMP    $F6
+BNE    $F0
+CPY    $F5
+BNE    $EC
+BEQ    $BD
+JSR    $AB69
+LDA    $00
+STA    $F7
+LDA    $01
+STA    $F8
+LDX    #$03
+LDA    $F5, X
+TAY
+EOR    $F1, X
+AND    $F5, X
+STA    $F5, X
+STY    $F1, X
+DEX
+BPL    $F2
+RTS
+STA    $00
+STX    $01
+STY    $02
+LDA    $2002
+LDA    $FF
+AND    #$FB
+STA    $2000
+STA    $FF
+LDA    $00
+STA    $2006
+LDY    #$00
+STY    $2006
+LDX    #$04
+CMP    #$20
+BCS    $02
+LDX    $02
+LDY    #$00
+LDA    $01
+STA    $2007
+DEY
+BNE    $FA
+DEX
+BNE    $F7
+LDY    $02
+LDA    $00
+CMP    #$20
+BCC    $12
+ADC    #$02
+STA    $2006
+LDA    #$C0
+STA    $2006
+LDX    #$40
+STY    $2007
+DEX
+BNE    $FA
+LDX    $01
+RTS
+PHA
+TXA
+STY    $01
+CLC
+SPC    $01
+TAX
+PLA
+LDY    #$00
+STY    $00
+STA    ($00), Y
+DEY
+BNE    $FB
+DEC    $01
+INX
+BNE    $F6
+RTS
+ASL    A
+TAY
+INY
+PLA
+STA    $00
+PLA
+STA    $01
+LDA    ($00), Y
+TAX
+INY
+LDA    ($00), Y
+STA    $01
+STX    $00
+JMP    $00
+BRK
+SEI
+INC    $8000
+LDA    #$1A
+JSR    $ACA3
+RTS
+RTS
+STA    $9FFF
+LSR    A
+STA    $9FFF
+LSR    A
+STA    $9FFF
+LSR    A
+STA    $9FFF
+LSR    A
+STA    $9FFF
+RTS
+STA    $BFFF
+LSR    A
+STA    $BFFF
+LSR    A
+STA    $BFFF
+LSR    A
+STA    $BFFF
+LSR    A
+STA    $BFFF
+RTS
+STA    $DFFF
+LSR    A
+STA    $DFFF
+LSR    A
+STA    $DFFF
+LSR    A
+STA    $DFFF
+LSR    A
+STA    $DFFF
+RTS
+STA    $FFF0
+LSR    A
+STA    $FFF0
+LSR    A
+STA    $FFF0
+LSR    A
+STA    $FFF0
+LSR    A
+STA    $FFF0
+RTS
+BRK
+JSR    $300F
+ASL    $0F, X
+JSR    $1812
+BIT    $2916
+BRK
+BMI    $0F
+AND    $15, X
+AND    $29, X
+ROL    $0F
+BIT    $2916
+BRK
+BMI    $FF
+BRK
+BPL    $0F
+ROL    A
+ROL    A
+BIT    $0F29
+BMI    $3A
+ORA    $FF, X
+BRK
+BMI    $38
+BRK
+BMI    $16
+BRK
+BMI    $21
+BRK
+ASL    $2A, X
+PLP
+BMI    $29
+BRK
+JSR    $0F12
+AND    #$37
+BMI    $27
+ORA    $37, X
+AND    #$37
+BMI    $27
+ORA    $37, X
+PHP
+ORA    ($12, X)
+ORA    ($13, X)
+ORA    ($0E, X)
+ORA    ($0E, X)
+ORA    $2B
+BRK
+BRK
+BRK
+BRK
+BRK
+BRK
+ORA    ($0C, X)
+ORA    $18
+ASL    $2B19
+ASL    $0E09
+ORA    $0E
+BRK
+BRK
+BRK
+BRK
+BRK
+BRK
+ORA    ($00, X)
+BRK
+BRK
+ADC    $00, X
+BRK
+BVC    $00
+BRK
+BRK
+BRK
+BRK
+JSR    $0000
+BPL    $00
+BRK
+BRK
+ORA    $00
+BRK
+BRK
+BRK
+ORA    #$05
+BRK
+BRK
+ORA    #$05
+BRK
+BRK
+JSR    $2000
+JSR    $2020
+JSR    $2040
+JSR    $2060
+JSR    $2080
+JSR    $20A0
+JSR    $20C0
+ORA    $FF16, X
+ASL    A
+ORA    $F5FF
+ORA    ($09, X)
+PHP
+JSR    $20E0
+AND    ($00, X)
+JSR    $FFFF
+CLC
+ASL    $0E15
+ORA    $181B, X
+CLC
+BPL    $1D
+ORA    $0C0E, X
+ORA    ($17), Y
+ASL    A
+AND    ($20, X)
+JSR    $FFFF
+AND    ($40, X)
+JSR    $FFFF
+LSR    $0E6E, X
+ORA    $18, X
+BPL    $6E
+ROR    $FF5F, X
+AND    ($60, X)
+JSR    $FFFF
+AND    ($80, X)
+JSR    $FFFF
+ORA    $1D0E, X
+ORA    $12, X
+ASL    $1C17
+ASL    $FF0D
+ORA    $FF18, X
+ORA    $170E, X
+ORA    $FF18
+AND    ($A0, X)
+JSR    $FFFF
+AND    ($C0, X)
+JSR    $FFFF
+SBC    $FF, X
+ORA    ($09, X)
+PHP
+ORA    #$FF
+ORA    $170E, X
+ORA    $FF18
+AND    ($E0, X)
+JSR    $FFFF
+BRK
+JSR    $FFFF
+ASL    A
+ORA    $15, X
+BPL    $11
+ORA    ($1D), Y
+ASL    $0E1C
+ASL    $FF0D
+JSR    $FF20
+RTI
+JSR    $FFFF
+CLC
+BPL    $12
+ASL    A
+ORA    $FF, X
+CLC
+ASL    $1D19
+AND    $0D
+ASL    $121C
+BPL    $17
+RTS
+JSR    $FFFF
+JSR    $FFFF
+ASL    A
+ORA    $19FF
+CLC
+BPL    $1B
+ASL    A
+ASL    $FF, X
+LDY    #$20
+CPY    #$20
+ASL    A
+ORA    $0E, X
+AND    ($0E, X)
+ORA    $230A, Y
+ORA    ($12), Y
+ORA    $1817, X
+CPX    #$20
+BRK
+JSR    $FFFF
+JSR    $FF20
+RTI
+JSR    $FFFF
+RTS
+JSR    $FFFF
+JSR    $FFFF
+LDY    #$20
+CPY    #$20
+BRK
+BRK
+BRK
+BRK
+BRK
+BRK
+CPY    $45F7
+EOR    $0F1F, X
+BRK
+CPX    #$20
+JSR    $2000
+BCC    $83
+BCC    $81
+STA    ($91, X)
+BCC    $83
+BVS    $71
+EOR    ($83, X)
+RTS
+ADC    ($62, X)
+STA    ($62), Y
+LDY    #$83
+STA    ($91, X)
+JSR    $2020
+LDA    ($62, X)
+STA    ($A1, X)
+RTS
+ADC    ($82, X)
+LDA    ($90, X)
+BCC    $A1
+STA    ($91, X)
+BVS    $71
+RTI
+STA    ($81, X)
+JSR    $2040
+STA    ($A1, X)
+BCC    $83
+BVS    $71
+STA    ($91, X)
+RTS
+ADC    ($82, X)
+LDA    ($82, X)
+LDY    #$83
+RTS
+ADC    ($62, X)
+JSR    $2060
+BCC    $81
+LDA    ($FF, X)
+STA    ($81, X)
+BVS    $71
+BCC    $A1
+EOR    ($83, X)
+BVS    $71
+RTI
+JSR    $2080
+EOR    ($83, X)
+LDA    ($FF, X)
+JSR    $20A0
+BCC    $A1
+LDY    #$91
+JSR    $20C0
+CPY    $C5
+DEC    $C7
+CMP    $C8
+CMP    #$CA
+CPY    $C5
+DEC    $C7
+CMP    $BC
+CPY    #$C1
+CMP    $FF
+CPY    $BFBE
+BCS    $B1
+JSR    $20E0
+BCC    $73
+CMP    $D6, X
+CMP    $FF, X
+CMP    $D3DA, Y
+CMP    $D6, X
+CMP    $9C, X
+BNE    $D1
+CMP    $FF, X
+INX
+SBC    #$CE
+AND    ($00, X)
+JSR    $FF72
+CMP    $FF, X
+CMP    $FF, X
+NOP
+CMP    $FF, X
+CMP    $9C, X
+CPX    #$E1
+CMP    $FF, X
+SBC    $DF5C, X
+AND    ($20, X)
+JSR    $FF82
+CMP    $FF, X
+CMP    $E4, X
+CMP    $FF, X
+CMP    $AC, X
+BEQ    $F1
+CMP    $FF, X
+SBC    $7E6C, X
+AND    ($40, X)
+JSR    $8190
+CMP    $FF, X
+CMP    $F4, X
+CMP    $FF, X
+CMP    $7C, X
+CMP    $FF, X
+ADC    $FD5D, X
+LDY    #$91
+AND    ($60, X)
+JSR    $6282
+CMP    $FF, X
+CMP    $FF, X
+CMP    $FFFF
+CMP    $FF, X
+CMP    $8C, X
+STA    $D5FF
+STY    $FD6D
+AND    ($80, X)
+JSR    $4380
+CMP    $FF, X
+CMP    $FF, X
+CMP    $FFFF, X
+CMP    $FF, X
+CMP    $9C, X
+STA    $D5FF, X
+STA    $8F8E, X
+RTI
+AND    ($A0, X)
+JSR    $8283
+SPC    $FF
+SPC    $EB
+CPX    $FFED
+SPC    $FF
+SPC    $AC
+LDA    $E5AE
+LDY    $9EAD
+AND    ($C0, X)
+JSR    $6160
+LDY    #$83
+AND    ($E0, X)
+JSR    $7170
+STA    ($91, X)
+BRK
+JSR    $7390
+JSR    $7220
+EOR    $56, X
+CLI
+EOR    $FF5A, Y
+STA    ($22), Y
+RTI
+JSR    $A082
+STA    ($FF), Y
+ADC    $66
+PLA
+ADC    #$6A
+RTS
+JSR    $6281
+ADC    $76, X
+SEI
+ADC    $7B7A, Y
+BCC    $A1
+JSR    $4062
+ORA    $1C1E, Y
+ORA    ($FF), Y
+ORA    $1B0A, X
+ORA    $FFFF, X
+STY    $85
+STX    $87
+DEY
+TXA
+BCC    $73
+LDY    #$20
+STY    $95, X
+STX    $97, Y
+TYA
+STA    $9B9A, Y
+CPY    #$20
+LDY    #$83
+LDY    $A5
+LDX    $A7
+TAY
+LDA    #$AA
+CPX    #$20
+STA    ($81, X)
+LDY    $B5, X
+LDX    $B7, Y
+CLV
+LDA    $BBBA, Y
+BCC    $A1
+BRK
+JSR    $6261
+JSR    $7120
+SBC    $FF, X
+ORA    ($09, X)
+PHP
+ORA    #$FF
+INC    $F7, X
+SED
+SBC    $FBFA, Y
+STA    ($A1, X)
+RTI
+JSR    $7291
+RTS
+ADC    ($23, X)
+RTS
+JSR    $8282
+STA    ($FF), Y
+STA    ($91, X)
+BCC    $73
+BCC    $83
+BCC    $81
+BVS    $71
+JSR    $6160
+RTI
+LDY    #$83
+STA    ($82), Y
+LDA    ($80, X)
+BCC    $A1
+LDY    #$91
+STA    ($80), Y
+LDY    #$20
+BVS    $71
+STA    ($A1, X)
+LDY    #$81
+LDA    ($62, X)
+BCC    $81
+RTS
+ADC    ($82, X)
+EOR    ($83, X)
+LDY    #$83
+CPY    #$20
+TAX
+TAX
+TAX
+TAX
+TAX
+TAX
+TAX
+TAX
+NOP
+TSX
+LDX    $A5
+LDA    $A5
+LDA    $A5
+LDA    $AA
+ROL    A
+BRK
+BRK
+BRK
+BRK
+BRK
+BRK
+TAX
+CPX    #$20
+LDX    #$00
+BRK
+BRK
+BRK
+TAX
+TAX
+BRK
+BRK
+BRK
+BRK
+TAX
+TAX
+LDX    #$A7
+LDA    $A0
+LDY    #$A0
+TAX
+ASL    A
+ASL    A
+ASL    A
+ASL    A
+ASL    A
+ASL    A
+ASL    A
+ASL    A
+JSR    $2000
+BCC    $73
+EOR    ($83, X)
+ADC    ($80, X)
+STA    ($80), Y
+STA    ($81, X)
+BCC    $81
+STA    ($61, X)
+ADC    ($90, X)
+JSR    $2020
+RTS
+ADC    ($90, X)
+LDA    ($82, X)
+LDY    #$83
+EOR    ($83, X)
+ADC    ($82, X)
+STA    ($A1, X)
+RTS
+ADC    ($82, X)
+JSR    $2040
+BVS    $71
+STA    ($A1, X)
+LDY    #$81
+STA    ($81, X)
+LDY    #$91
+LDA    ($70, X)
+ADC    ($90), Y
+LDA    ($82, X)
+JSR    $2060
+BMI    $31
+AND    ($31), Y
+AND    ($31), Y
+AND    ($31), Y
+AND    ($31), Y
+AND    ($31), Y
+AND    ($32), Y
+RTS
+ADC    ($62, X)
+RTS
+ADC    ($82, X)
+STA    ($80), Y
+LDA    ($20, X)
+JSR    $4280
+BPL    $0A
+ASL    A
+ASL    $0E, X
+ORA    $1922, X
+ASL    $34FF
+LDY    #$81
+LDY    #$91
+BVS    $71
+BVS    $71
+BCC    $73
+LDY    #$83
+JSR    $20A0
+AND    $36, X
+ROL    $36, X
+ROL    $36, X
+ROL    $36, X
+ROL    $36, X
+ROL    $36, X
+ROL    $37, X
+BCC    $73
+STA    ($82), Y
+LDA    ($60, X)
+ADC    ($72, X)
+RTS
+ADC    ($80, X)
+JSR    $20C0
+RTI
+LDY    #$81
+STA    ($81, X)
+STA    ($81, X)
+LDA    ($90, X)
+LDY    #$83
+LDY    #$81
+BVS    $71
+BVS    $71
+JSR    $20E0
+BCC    $73
+BCC    $73
+SEC
+AND    $3939, Y
+AND    $3939, Y
+AND    $3A39, Y
+SEC
+AND    $3939, Y
+AND    $3939, Y
+AND    $3A39, Y
+BCC    $A1
+AND    ($00, X)
+JSR    $A180
+LDA    ($80, X)
+EOR    ($83, X)
+ASL    A
+BIT    $1D
+ORA    $FF0E, Y
+BIT    $1D
+ORA    $FF0E, Y
+AND    ($20, X)
+JSR    $7390
+STA    ($61, X)
+AND    $3E3E, X
+ROL    $3E3E, X
+ROL    $3E3E, X
+LDY    #$73
+AND    $3E3E, X
+ROL    $3E3E, X
+ROL    $3E3E, X
+BCC    $73
+AND    ($40, X)
+JSR    $8072
+EOR    ($83, X)
+LDY    #$91
+RTS
+ADC    ($60, X)
+ADC    ($62, X)
+STA    ($61, X)
+RTS
+ADC    ($80, X)
+STA    ($81, X)
+ADC    ($90, X)
+STA    ($83, X)
+LDA    ($80, X)
+ADC    ($21, X)
+RTS
+JSR    $9082
+STA    ($83, X)
+LDY    #$81
+BVS    $71
+BVS    $71
+LDY    #$81
+BVS    $71
+STA    ($61, X)
+LDY    #$91
+STA    ($81, X)
+AND    ($80, X)
+JSR    $8262
+BMI    $31
+AND    ($31), Y
+AND    ($31), Y
+AND    ($31), Y
+AND    ($31), Y
+AND    ($31), Y
+AND    ($32), Y
+EOR    ($83, X)
+BCC    $73
+STA    ($82), Y
+AND    ($A0, X)
+JSR    $8072
+ASL    $1E, X
+ORA    $1922, X
+ASL    $34FF
+LDY    #$91
+STA    ($61, X)
+BCC    $73
+LDY    #$83
+AND    ($C0, X)
+JSR    $73A0
+AND    $36, X
+ROL    $36, X
+ROL    $36, X
+ROL    $36, X
+ROL    $36, X
+ROL    $36, X
+ROL    $37, X
+STA    ($82), Y
+RTS
+ADC    ($82, X)
+STA    ($61, X)
+AND    ($E0, X)
+JSR    $6160
+STA    ($61, X)
+STA    ($81, X)
+STA    ($81, X)
+LDY    #$81
+LDY    #$83
+BVS    $71
+EOR    ($83, X)
+STA    ($82), Y
+BRK
+JSR    $7170
+LDY    #$81
+STA    ($61, X)
+PLP
+AND    #$29
+AND    #$29
+AND    #$29
+AND    #$29
+AND    #$29
+ROL    A
+STA    ($81, X)
+RTS
+ADC    ($A0, X)
+JSR    $8120
+RTS
+ADC    ($62, X)
+LDY    #$81
+BIT    $8180
+STA    ($83, X)
+BVS    $71
+STA    ($22, X)
+RTI
+JSR    $6261
+BVS    $71
+RTI
+BCC    $73
+RTI
+ASL    $1E, X
+ORA    ($FF, X)
+BIT    $8062
+ADC    ($60, X)
+ADC    ($90, X)
+STA    ($83, X)
+RTS
+JSR    $A082
+STA    ($62), Y
+BIT    $91A0
+BVS    $71
+JSR    $6273
+BCC    $A1
+RTI
+LDY    #$91
+ASL    $1E, X
+BIT    $8262
+RTS
+ADC    ($72, X)
+LDY    #$22
+LDY    #$20
+RTI
+LDY    #$73
+RTS
+ADC    ($82, X)
+RTS
+ADC    ($82, X)
+BIT    $7340
+BVS    $71
+LDY    #$73
+CPY    #$20
+ADC    ($82, X)
+STA    ($81, X)
+BVS    $71
+BVS    $71
+ASL    $1E, X
+BIT    $9082
+STA    ($61, X)
+CPX    #$20
+ADC    ($90), Y
+STA    ($83, X)
+STA    ($61, X)
+STA    ($A1, X)
+BIT    $A180
+STA    ($A1, X)
+BCC    $73
+BRK
+JSR    $8261
+STA    ($61, X)
+CLC
+BIT    $8180
+STA    ($83, X)
+LDA    ($60, X)
+ADC    ($23, X)
+JSR    $8220
+RTS
+ADC    ($82, X)
+BCC    $A1
+EOR    ($83, X)
+BIT    $6160
+ADC    ($70, X)
+ADC    ($23), Y
+RTI
+JSR    $7062
+ADC    ($62), Y
+BCC    $81
+RTI
+AND    $2E2E
+ROL    $2E2E
+ROL    $2E2E
+ROL    $2F2E
+BVS    $71
+RTI
+STA    ($23, X)
+RTS
+JSR    $6272
+EOR    ($83, X)
+RTS
+ADC    ($72, X)
+STA    ($81, X)
+ADC    ($90, X)
+STA    ($83, X)
+BCC    $73
+RTS
+ADC    ($72, X)
+JSR    $A072
+STA    ($83, X)
+BVS    $71
+BCC    $A1
+RTS
+ADC    ($80, X)
+EOR    ($83, X)
+LDA    ($62, X)
+BVS    $71
+BCC    $A1
+LDY    #$20
+STA    ($61, X)
+BCC    $73
+BVS    $71
+EOR    ($83, X)
+EOR    ($83, X)
+STA    ($61, X)
+LDA    ($23, X)
+CPY    #$20
+ROL    A
+ASL    A
+ASL    A
+ASL    A
+TXA
+TAX
+TAX
+TAX
+LDX    #$60
+BVC    $50
+TYA
+TAX
+TAX
+TAX
+ROR    A
+LSR    $55, X
+EOR    $19, X
+ASL    A
+ASL    A
+TXA
+BRK
+BRK
+BRK
+DEY
+TAX
+TAX
+TAX
+CPX    #$20
+TAX
+TAX
+TAX
+BRK
+BRK
+BRK
+TAX
+TAX
+TAX
+TAX
+TAX
+BRK
+BRK
+BRK
+TAX
+TAX
+TAX
+TAX
+TAX
+BRK
+BRK
+BRK
+TAX
+TAX
+ASL    A
+ASL    A
+ASL    A
+ASL    A
+ASL    A
+ASL    A
+ASL    A
+ASL    A
+JSR    $2000
+RTS
+ADC    ($60, X)
+ADC    ($62, X)
+BCC    $83
+STA    ($80), Y
+STA    ($70), Y
+ADC    ($62), Y
+STA    ($81, X)
+BCC    $83
+STA    ($91, X)
+JSR    $2020
+BVS    $71
+BVS    $71
+BCC    $A1
+LDY    #$81
+LDY    #$83
+LDY    #$83
+EOR    ($83, X)
+BCC    $81
+LDA    ($90, X)
+LDA    ($A0, X)
+STA    ($83, X)
+JSR    $2040
+STA    ($81, X)
+LDY    #$83
+LDA    ($38, X)
+AND    $3939, Y
+AND    $3939, Y
+AND    $3A39, Y
+STA    ($81, X)
+STA    ($91, X)
+RTS
+ADC    ($20, X)
+RTS
+JSR    $9180
+SEC
+AND    $3939, Y
+AND    $3939, Y
+AND    $FF3B, Y
+BIT    $1D
+ORA    $FF0E, Y
+AND    $3939, Y
+AND    $3939, Y
+AND    $823A, Y
+BVS    $71
+JSR    $2080
+AND    $3E3E, X
+ROL    $3E3E, X
+ROL    $3E3E, X
+BCC    $81
+JSR    $20A0
+STA    ($20), Y
+CPY    #$20
+LDY    #$83
+RTS
+ADC    ($72, X)
+JSR    $20E0
+BCC    $81
+EOR    $45
+EOR    $45
+EOR    $46
+EOR    $45
+EOR    $45
+EOR    $45
+LSR    $FF
+BVS    $71
+AND    ($00, X)
+JSR    $8082
+STA    ($3B), Y
+ORA    $0E, X
+ASL    $4815
+ORA    ($0E), Y
+BPL    $11
+ORA    ($1D), Y
+PHA
+STA    ($91, X)
+AND    ($20, X)
+JSR    $6160
+EOR    #$4A
+LSR    A
+LSR    A
+LSR    A
+LSR    A
+EOR    #$4A
+LSR    A
+LSR    A
+LSR    A
+LSR    A
+LSR    A
+AND    ($40, X)
+JSR    $7170
+PLP
+AND    #$50
+AND    #$50
+AND    #$50
+AND    #$50
+AND    #$2A
+PLP
+AND    #$50
+AND    #$50
+AND    #$2A
+LDY    #$91
+AND    ($60, X)
+JSR    $8180
+STA    ($3B), Y
+BRK
+ORA    ($2B, X)
+BIT    $FFFF
+BRK
+ORA    ($2B, X)
+BIT    $FFFF
+AND    ($80, X)
+JSR    $6262
+JMP    $4D2E
+ROL    $2E4D
+EOR    $4D2E
+ROL    $FF4E
+JMP    $4D2E
+ROL    $2E4D
+LSR    $FFFF
+AND    ($A0, X)
+JSR    $A072
+STA    ($3B), Y
+ORA    $2B
+ASL    $2B
+PHP
+ORA    #$2C
+ORA    $2C
+LDY    #$83
+AND    ($C0, X)
+JSR    $6272
+AND    $512E
+ROL    $2E51
+EOR    ($2E), Y
+EOR    ($2E), Y
+AND    $512E
+ROL    $2E51
+LDY    #$81
+AND    ($E0, X)
+JSR    $7282
+BCC    $81
+BRK
+JSR    $A062
+STA    ($22), Y
+JSR    $A020
+STA    ($83, X)
+PLP
+AND    #$29
+AND    #$29
+AND    #$29
+AND    #$29
+AND    #$29
+AND    #$29
+AND    #$29
+AND    #$29
+AND    #$29
+AND    #$29
+ROL    A
+RTS
+ADC    ($72, X)
+RTI
+JSR    $8062
+STA    ($3B), Y
+ASL    A
+ASL    $0E, X
+CLC
+ASL    $FFFF
+ORA    $1F, X
+BIT    $3CFF
+BVS    $71
+RTS
+JSR    $6242
+JMP    $2E2E
+ROL    $2E2E
+ROL    $2E2E
+ROL    $2E2E
+ROL    $2E2E
+ROL    $2E2E
+ROL    $2E2E
+LSR    $3CFF
+STA    ($91, X)
+JSR    $7282
+ORA    ($FF, X)
+BIT    $3CFF
+LDY    #$20
+LDA    ($62, X)
+BIT    $3CFF
+LDY    #$91
+CPY    #$20
+RTS
+ADC    ($72, X)
+BIT    $3CFF
+CPX    #$20
+BVS    $71
+BIT    $3CFF
+BRK
+JSR    $6262
+BIT    $3CFF
+LDY    #$83
+JSR    $7220
+RTI
+AND    $2E2E
+ROL    $2E2E
+ROL    $2E2E
+ROL    $2E2E
+ROL    $2E2E
+ROL    $2E2E
+ROL    $2E2E
+LDY    #$81
+RTI
+JSR    $8272
+RTS
+ADC    ($23, X)
+RTS
+JSR    $9082
+LDA    ($3D, X)
+ROL    $3E3E, X
+ROL    $3E3E, X
+ROL    $3E3E, X
+ROL    $3E3E, X
+ROL    $3E3E, X
+ROL    $3E3E, X
+ROL    $3E3E, X
+ROL    $3E3E, X
+BVS    $71
+JSR    $8262
+BCC    $83
+STA    ($91, X)
+STA    ($81, X)
+BCC    $83
+BCC    $83
+RTS
+ADC    ($90, X)
+STA    ($83, X)
+STA    ($80), Y
+STA    ($A0), Y
+LDY    #$20
+LDA    ($80, X)
+EOR    ($83, X)
+LDA    ($62, X)
+BVS    $71
+STA    ($A1, X)
+RTS
+ADC    ($A0, X)
+LDY    #$83
+EOR    ($23, X)
+CPY    #$20
+TAX
+TAX
+TAX
+TAX
+TAX
+TAX
+TAX
+TAX
+TAX
+EOR    $A9, X
+TAX
+TXS
+LDX    $A5
+TAX
+TAX
+CMP    $FA, X
+SED
+TAX
+TAX
+CMP    $FFFF, X
+TAX
+CPX    #$20
+TAX
+BRK
+BRK
+BRK
+BRK
+BRK
+BRK
+TAX
+TAX
+BRK
+BRK
+BRK
+BRK
+BRK
+BRK
+TAX
+TAX
+LDY    #$A0
+LDY    #$A0
+LDY    #$A0
+TAX
+ASL    A
+ASL    A
+ASL    A
+ASL    A
+ASL    A
+ASL    A
+ASL    A
+ASL    A
+JSR    $2000
+ADC    $787A, Y
+ADC    $7A, X
+SEI
+SEI
+SEI
+BVS    $71
+SEI
+ADC    $7A, X
+JSR    $2020
+SEI
+SEI
+ADC    $7A79, Y
+SEI
+STY    $7A
+STA    ($82, X)
+ADC    $877A, Y
+SEI
+SEI
+STA    $20
+RTI
+JSR    $7287
+SEI
+STY    $7A
+SEC
+AND    $3939, Y
+AND    $3939, Y
+AND    $3939, Y
+AND    $383A, Y
+AND    $3939, Y
+AND    $3939, Y
+JSR    $2060
+SEC
+AND    $3939, Y
+AND    $3939, Y
+ORA    $12, X
+ASL    $241C
+JSR    $2080
+BIT    $1D
+ORA    $3C0E, Y
+AND    $3E3E, X
+ROL    $3E3E, X
+ROL    $3E3E, X
+ROL    $3F3E, X
+ORA    $1918, X
+JSR    $20A0
+AND    $3E3E, X
+ROL    $3E3E, X
+ROL    $873F, X
+-----------------------END OF FILE-----------------------

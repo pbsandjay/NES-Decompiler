@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\source\\repos\\NES_Decom\\NES_Decom\\NES_Decom.csproj": {}
+    "C:\\Users\\Jay\\Desktop\\NES-Decompiler-master\\NES_Decom\\NES_Decom.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\source\\repos\\NES_Decom\\NES_Decom\\NES_Decom.csproj": {
+    "C:\\Users\\Jay\\Desktop\\NES-Decompiler-master\\NES_Decom\\NES_Decom.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\source\\repos\\NES_Decom\\NES_Decom\\NES_Decom.csproj",
+        "projectUniqueName": "C:\\Users\\Jay\\Desktop\\NES-Decompiler-master\\NES_Decom\\NES_Decom.csproj",
         "projectName": "NES_Decom",
-        "projectPath": "C:\\Users\\admin\\source\\repos\\NES_Decom\\NES_Decom\\NES_Decom.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\source\\repos\\NES_Decom\\NES_Decom\\obj\\",
+        "projectPath": "C:\\Users\\Jay\\Desktop\\NES-Decompiler-master\\NES_Decom\\NES_Decom.csproj",
+        "packagesPath": "C:\\Users\\Jay\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jay\\Desktop\\NES-Decompiler-master\\NES_Decom\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jay\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -29,6 +30,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -40,6 +42,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "imports": [
             "net461",
             "net462",
@@ -55,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
