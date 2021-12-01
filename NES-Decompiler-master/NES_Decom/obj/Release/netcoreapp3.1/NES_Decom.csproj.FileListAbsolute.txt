@@ -1,0 +1,13 @@
+C:\Users\Jay\Desktop\NES-Decompiler-master\NES_Decom\bin\Release\netcoreapp3.1\NES_Decom.exe
+C:\Users\Jay\Desktop\NES-Decompiler-master\NES_Decom\bin\Release\netcoreapp3.1\NES_Decom.deps.json
+C:\Users\Jay\Desktop\NES-Decompiler-master\NES_Decom\bin\Release\netcoreapp3.1\NES_Decom.runtimeconfig.json
+C:\Users\Jay\Desktop\NES-Decompiler-master\NES_Decom\bin\Release\netcoreapp3.1\NES_Decom.runtimeconfig.dev.json
+C:\Users\Jay\Desktop\NES-Decompiler-master\NES_Decom\bin\Release\netcoreapp3.1\NES_Decom.dll
+C:\Users\Jay\Desktop\NES-Decompiler-master\NES_Decom\bin\Release\netcoreapp3.1\NES_Decom.pdb
+C:\Users\Jay\Desktop\NES-Decompiler-master\NES_Decom\obj\Release\netcoreapp3.1\NES_Decom.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jay\Desktop\NES-Decompiler-master\NES_Decom\obj\Release\netcoreapp3.1\NES_Decom.AssemblyInfoInputs.cache
+C:\Users\Jay\Desktop\NES-Decompiler-master\NES_Decom\obj\Release\netcoreapp3.1\NES_Decom.AssemblyInfo.cs
+C:\Users\Jay\Desktop\NES-Decompiler-master\NES_Decom\obj\Release\netcoreapp3.1\NES_Decom.csproj.CoreCompileInputs.cache
+C:\Users\Jay\Desktop\NES-Decompiler-master\NES_Decom\obj\Release\netcoreapp3.1\NES_Decom.dll
+C:\Users\Jay\Desktop\NES-Decompiler-master\NES_Decom\obj\Release\netcoreapp3.1\NES_Decom.pdb
+C:\Users\Jay\Desktop\NES-Decompiler-master\NES_Decom\obj\Release\netcoreapp3.1\NES_Decom.genruntimeconfig.cache
