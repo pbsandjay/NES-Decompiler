@@ -53,7 +53,8 @@ namespace NES_Decom
                 {
                     if (ROMext == ".nes")
                     {
-                        NESRom(fileName, romName, ROMext, outputName);
+                        //string fileName, string romName, string ext, string outputName
+                        ReadNESRom(fileName, romName, ROMext, outputName);
                         ROMFile = true;
                     }
 
@@ -112,13 +113,17 @@ namespace NES_Decom
             }
         }
 
+
+
         /// <summary>
-        /// Checks NES ROM and Text file to then be passed to ReadNESROM
+        /// Reads the Provided NES ROM and Text file to be iterated through and sends translations to text file.
         /// </summary>
-        /// <param name="fileName"></param>
+        /// <param name="fName"></param>
+        /// <param name="outputName"></param>
         /// <param name="romName"></param>
-        public static void NESRom(string fileName, string romName, string ext, string outputName)
+        private unsafe static void ReadNESRom(string fileName, string romName, string ext, string outputName)
         {
+
             //the file check logic is EXTREMELY messy. I'll touch it up later™
             string fileExt = ".nes";
             bool trueNESFile = false;
@@ -141,25 +146,10 @@ namespace NES_Decom
                     trueNESFile = true;
                 }
             }
-            
-            //string path = Path.GetDirectoryName(outputName);
-            //Console.WriteLine(path);
-            
 
-            ReadNESRom(fileName, outputName, romName);
-        }
-
-        /// <summary>
-        /// This sets up the NES rom to be passsed to NESDisassemble
-        /// </summary>
-        /// <param name="fName"></param>
-        /// <param name="outputName"></param>
-        /// <param name="romName"></param>
-        private unsafe static void ReadNESRom(string fName, string outputName, string romName)
-        {
             string textName = outputName;
             string nesName = romName;
-            using (FileStream fs = new FileStream(fName, FileMode.Open))
+            using (FileStream fs = new FileStream(fileName, FileMode.Open))
  
             {
                 
@@ -259,11 +249,6 @@ namespace NES_Decom
 
                 }
             }
-        }
-
-        public static void RenameFile (FileInfo originalFile, string newName)
-        {
-            originalFile.MoveTo(newName);
         }
     }
 }
