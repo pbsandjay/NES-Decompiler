@@ -18,15 +18,17 @@ namespace NES_Decom
             int opBytes = 1; //the default length of the op
 
 
+
             using (var writer = new StreamWriter(fileName, true))
             {
+                int lineCounter = 1;
 
                 writer.AutoFlush = true;
 
                 switch (*code)
 
                 {
-                    case 0x00: writer.WriteLine("BRK"); Console.WriteLine("BRK"); break;
+                    case 0x00: writer.WriteLine(lineCounter + "BRK"); Console.WriteLine(lineCounter + "BRK"); lineCounter++; break;
                     case 0x01: writer.WriteLine("ORA    (${0:X2}, X)", code[1]); Console.WriteLine("ORA    (${0:X2}, X)", code[1]); opBytes = 2; break;
                     case 0x05: writer.WriteLine("ORA    ${0:X2}", code[1]); Console.WriteLine("ORA    ${0:X2}", code[1]); opBytes = 2; break;
                     case 0x06: writer.WriteLine("ASL    ${0:X2}", code[1]); Console.WriteLine("ASL    ${0:X2}", code[1]); opBytes = 2; break;

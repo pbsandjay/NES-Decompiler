@@ -125,10 +125,9 @@ namespace NES_Decom
         {
 
             //the file check logic is EXTREMELY messy. I'll touch it up later™
-            string fileExt = ".nes";
-            bool trueNESFile = false;
+            //string fileExt = ".nes";
 
-            while (!ext.Equals(fileExt) == true && trueNESFile == false)
+            /*while (!ext.Equals(fileExt) == true && trueNESFile == false)
             {
                 Console.WriteLine("Not an NES file! Try again!");
                 if (trueNESFile == false)
@@ -146,6 +145,7 @@ namespace NES_Decom
                     trueNESFile = true;
                 }
             }
+            */
 
             string textName = outputName;
             string nesName = romName;
@@ -167,6 +167,10 @@ namespace NES_Decom
                 }
 
                 byte[] byteArray = hexBuffer.ToArray();
+                //bool NESFormat = false;
+
+
+
 
                 int NESheader = 16; //size of the iNES Header. 16 bytes (0x10 OR 10h)
                 int defaultPRG = 16384; //default size of the PRG ROM data, increases by a multiplication of ROM[4] (list how many PRG banks there are at this area of ROM)
@@ -174,9 +178,10 @@ namespace NES_Decom
 
                 byte PRGLoc = byteArray[4]; //takes this number and multiplies it by defaultPRG to get the size of the Program Data.
                 byte CHRLoc = byteArray[5]; //takes the number stored at this index and multiplies it by the defaultCHR to get the Character Data.
-
                 int PRGSize = defaultPRG * PRGLoc; //get the size in bytes of the PRG 
                 int CHRSize = defaultCHR * CHRLoc; //get the size in bytes of the CHR
+
+
 
 
                 int flag6 = byteArray[6];
@@ -224,6 +229,19 @@ namespace NES_Decom
                     {
                         data.WriteLine("{0} uses four-screen VRAM", romName); Console.WriteLine("{0} uses four-screen VRAM", romName);
 
+                    }
+
+                    //Trying a new way to test file checking logic... Kind of. Will mature over time. 
+                    //I might need to take Bikini Bottom and push it somewhere else so it's not just randomly placed within ROM flag scraping code. 
+                    bool iNESFormat = false;
+                    if (Convert.ToChar(byteArray[0]) == 'N' && Convert.ToChar(byteArray[1]) == 'E' && Convert.ToChar(byteArray[2]) == 'S' && byteArray[3] == 0x1A)
+                    {
+                        data.WriteLine("This uses the iNES 1.0 ROM header"); Console.WriteLine("This uses the iNES 1.0 ROM header");
+                        iNESFormat = true;
+                    }
+                    if (iNESFormat == true && (byteArray[7]&0x0c)==0x08)
+                    {
+                        data.WriteLine("This uses the iNES 2.0 ROM header"); Console.WriteLine("This uses the iNES 2.0 ROM header");
                     }
 
 
