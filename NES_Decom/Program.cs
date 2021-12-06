@@ -11,15 +11,123 @@ namespace NES_Decom
         static void Main(string[] args)
         {
 
-            //the file check logic is EXTREMELY messy. I'll touch it up later™
-            Console.WriteLine("Drag and drop your NES ROM file in this text box then press enter...");
-            string fileName = Console.ReadLine();
-            string ext = Path.GetExtension(fileName);
-            string romName = Path.GetFileName(fileName);
-            string fileExt = ".nes";
-            bool trueNESFile = false;
 
-            while (!ext.Equals(fileExt) == true && trueNESFile == false)
+            bool restart = true;
+            while (restart == true)
+            {
+                Console.WriteLine("Create a text file somewhere then drag and drop that text file into here and press enter...");
+                string outputName = Console.ReadLine();
+                string extOut = Path.GetExtension(outputName);
+
+
+                //TODO: Try to rename the input TXT file to <gamename>_disassembled.txt
+
+                string extCheck = ".txt";
+                bool trueTXTFile = false;
+
+                while (!extOut.Equals(extCheck) == true && trueTXTFile == false)
+                {
+                    Console.WriteLine("Not an TEXT file! Try again!");
+                    if (trueTXTFile == false)
+                    {
+                        trueTXTFile = false;
+                        Console.WriteLine("Drag and drop your TEXT file in this text box then press enter...");
+                        outputName = Console.ReadLine();
+                        extOut = Path.GetExtension(outputName);
+                        extCheck = ".txt";
+                    }
+
+                    else if (extOut.Equals(extCheck))
+                    {
+                        trueTXTFile = true;
+                    }
+
+                }
+                Console.WriteLine("Drag and drop your ROM file into this console window...\n");
+                string fileName = Console.ReadLine();
+                string romName = Path.GetFileName(fileName);
+                string ROMext = Path.GetExtension(fileName);
+                Console.WriteLine(ROMext);
+                bool ROMFile = false;
+                while (ROMFile == false)
+                {
+                    if (ROMext == ".nes")
+                    {
+                        //string fileName, string romName, string ext, string outputName
+                        ReadNESRom(fileName, romName, ROMext, outputName);
+                        ROMFile = true;
+                    }
+
+                    if (ROMext == ".gb")
+                    {
+                        //GBRom();
+                        ROMFile = true;
+
+                    }
+
+                    if (ROMext != ".nes" && ROMext != ".gb")
+                    {
+                        Console.WriteLine("You have not selected a compatible ROM file, try again!\n");
+                        Console.WriteLine("Would you like to try again? Y/N");
+                        string userSelection = Console.ReadLine();
+                        if (userSelection == "Y")
+                        {
+                            ROMFile = false;
+                        }
+                        else
+                        {
+                            Environment.Exit(0);
+                        }
+                    }
+
+
+                    Console.WriteLine("Decompiling done. This SHOULD have stripped CHR data. A few bytes might have slipped through the cracks.\nCheck your ouput text for the full code.\n");
+                    using (StreamWriter ending = File.AppendText(outputName))
+                    {
+                        Console.WriteLine("-----------------------END OF FILE-----------------------");
+                        ending.WriteLine("-----------------------END OF FILE-----------------------");
+
+                    }
+                    /*string TextFileName = Path.GetFileName(outputName);
+                    Console.WriteLine(TextFileName);
+                    string RenamedFile = (TextFileName + "_Disassembled");
+                    if (File.Exists(outputName))
+                    {
+                        File.Move(outputName, RenamedFile);
+                    }
+                    */
+
+                    Console.WriteLine("Would you like to convert another ROM file? (Y/N) ");
+                    string UserContinue = Console.ReadLine();
+                    if (UserContinue == "Y" || UserContinue == "y")
+                    {
+                        restart = true;
+                    }
+                    else
+                    {
+                        Environment.Exit(0);
+                    }
+                    
+                }
+
+            }
+        }
+
+
+
+        /// <summary>
+        /// Reads the Provided NES ROM and Text file to be iterated through and sends translations to text file.
+        /// </summary>
+        /// <param name="fName"></param>
+        /// <param name="outputName"></param>
+        /// <param name="romName"></param>
+        private unsafe static void ReadNESRom(string fileName, string romName, string ext, string outputName)
+        {
+
+            //the file check logic is EXTREMELY messy. I'll touch it up later™
+            //string fileExt = ".nes";
+
+            /*while (!ext.Equals(fileExt) == true && trueNESFile == false)
             {
                 Console.WriteLine("Not an NES file! Try again!");
                 if (trueNESFile == false)
@@ -37,52 +145,11 @@ namespace NES_Decom
                     trueNESFile = true;
                 }
             }
+            */
 
-            
-
-
-            Console.WriteLine("Create a text file somewhere then drag and drop that text file into here and press enter...");
-            string outputName = Console.ReadLine();
-            //string path = Path.GetDirectoryName(outputName);
-            //Console.WriteLine(path);
-            string extOut = Path.GetExtension(outputName);
-
-
-            //TODO: Try to rename the input TXT file to <gamename>_disassembled.txt
-
-            string extCheck = ".txt";
-            bool trueTXTFile = false;
-
-            while (!extOut.Equals(extCheck) == true && trueTXTFile == false)
-            {
-                Console.WriteLine("Not an TEXT file! Try again!");
-                if (trueTXTFile == false)
-                {
-                    trueTXTFile = false;
-                    Console.WriteLine("Drag and drop your TEXT file in this text box then press enter...");
-                    outputName = Console.ReadLine();
-                    extOut = Path.GetExtension(outputName);
-                    extCheck = ".txt";
-                }
-
-                else if (extOut.Equals(extCheck))
-                {
-                    trueTXTFile = true;
-                }
-                
-            }
-
-            ReadRom(fileName, outputName, romName);
-
-            Console.WriteLine("Decompiling done. This SHOULD have stripped CHR data. A few bytes might have slipped through the cracks.\nCheck your ouput text for the full code.\nPress enter to close");
-            Console.Read();
-        }
-
-        private unsafe static void ReadRom(string fName, string outputName, string romName)
-        {
             string textName = outputName;
             string nesName = romName;
-            using (FileStream fs = new FileStream(fName, FileMode.Open))
+            using (FileStream fs = new FileStream(fileName, FileMode.Open))
  
             {
                 
@@ -100,6 +167,10 @@ namespace NES_Decom
                 }
 
                 byte[] byteArray = hexBuffer.ToArray();
+                //bool NESFormat = false;
+
+
+
 
                 int NESheader = 16; //size of the iNES Header. 16 bytes (0x10 OR 10h)
                 int defaultPRG = 16384; //default size of the PRG ROM data, increases by a multiplication of ROM[4] (list how many PRG banks there are at this area of ROM)
@@ -107,17 +178,18 @@ namespace NES_Decom
 
                 byte PRGLoc = byteArray[4]; //takes this number and multiplies it by defaultPRG to get the size of the Program Data.
                 byte CHRLoc = byteArray[5]; //takes the number stored at this index and multiplies it by the defaultCHR to get the Character Data.
-
                 int PRGSize = defaultPRG * PRGLoc; //get the size in bytes of the PRG 
                 int CHRSize = defaultCHR * CHRLoc; //get the size in bytes of the CHR
+
+
+
 
                 int flag6 = byteArray[6];
                 string flag6Convert = Convert.ToString(flag6, 2);
 
                 char[] flag6Char = flag6Convert.ToCharArray();
 
-
-                using (var data = new StreamWriter(outputName, true))
+                using (var data = new StreamWriter(outputName, false))
                 {
 
 
@@ -159,6 +231,19 @@ namespace NES_Decom
 
                     }
 
+                    //Trying a new way to test file checking logic... Kind of. Will mature over time. 
+                    //I might need to take Bikini Bottom and push it somewhere else so it's not just randomly placed within ROM flag scraping code. 
+                    bool iNESFormat = false;
+                    if (Convert.ToChar(byteArray[0]) == 'N' && Convert.ToChar(byteArray[1]) == 'E' && Convert.ToChar(byteArray[2]) == 'S' && byteArray[3] == 0x1A)
+                    {
+                        data.WriteLine("This uses the iNES 1.0 ROM header"); Console.WriteLine("This uses the iNES 1.0 ROM header");
+                        iNESFormat = true;
+                    }
+                    if (iNESFormat == true && (byteArray[7]&0x0c)==0x08)
+                    {
+                        data.WriteLine("This uses the iNES 2.0 ROM header"); Console.WriteLine("This uses the iNES 2.0 ROM header");
+                    }
+
 
 
                     data.WriteLine("The full size of {0} is {1}KB", romName, (byteArray.Length / 1024)); Console.WriteLine("The full size of {0} is {1}KB", romName, (byteArray.Length / 1024)); //testing for overall ROM size. 
@@ -179,6 +264,7 @@ namespace NES_Decom
                     {
                         pc += nes.Disassembler(ToArrayBytes, pc, textName);
                     }
+
                 }
             }
         }
