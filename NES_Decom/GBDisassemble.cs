@@ -28,7 +28,7 @@ namespace NES_Decom
                 switch (*code)
 
                 {
-                    case 0x00: writer.WriteLine(lineCounter + "BRK"); Console.WriteLine(lineCounter + "BRK"); lineCounter++; break;
+                    case 0x00: writer.WriteLine("BRK"); Console.WriteLine(lineCounter + "BRK"); break;
                     case 0x01: writer.WriteLine("ORA    (${0:X2}, X)", code[1]); Console.WriteLine("ORA    (${0:X2}, X)", code[1]); opBytes = 2; break;
                     case 0x05: writer.WriteLine("ORA    ${0:X2}", code[1]); Console.WriteLine("ORA    ${0:X2}", code[1]); opBytes = 2; break;
                     case 0x06: writer.WriteLine("ASL    ${0:X2}", code[1]); Console.WriteLine("ASL    ${0:X2}", code[1]); opBytes = 2; break;

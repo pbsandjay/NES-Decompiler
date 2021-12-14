@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace NES_Decom
 {
